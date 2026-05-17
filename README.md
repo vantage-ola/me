@@ -1,6 +1,4 @@
-# me
-
-Personal website and portfolio — built with Vite, React, and `@mdwrk/markdown-renderer-react`.
+My personal website and portfolio — built with Vite, React, and `@mdwrk/markdown-renderer-react`.
 
 # What this is
 
