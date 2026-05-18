@@ -4,7 +4,7 @@ My personal website and portfolio — built with Vite, React, and `@mdwrk/markdo
 
 A fast, markdown-first personal site. Content lives in `.md` files. The renderer handles parsing, theming, and output. No CMS, no database, no heavy framework config.
 
-It also serves as the first real consumer of a portfolio package idea I am thinking of, in the markdown_workspace repository (`@mdwrk/portfolio-kit` ). As patterns solidify here, they might get extracted there.
+It also serves as the first real consumer of a portfolio package idea I am thinking of, in the [markdown_workspace](https://github.com/groupsum/markdown_workspace) repository (`@mdwrk/portfolio-kit` ). As patterns solidify here, they might get extracted there.
 
 ---
 
