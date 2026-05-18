@@ -8,7 +8,7 @@ I use **Trae** for most of my projects. For **Sui Move**, I stick with **VS Code
 
 ## AI & Agents
 
-I'm deep into the AI ecosystem and love exploring new models and agents. I primarily use **OpenCode** configured with various API keys. My current rotation includes **DeepSeek V4**, and **GLM models**. I also use **Claude Code** for specific tasks. Honestly, I'm always testing everything—if there's a new model or agentic tool out there, I'm probably exploring it.
+I'm deep into the AI ecosystem and love exploring new models and agents. I primarily use **OpenCode** configured with various API keys. My current rotation includes **DeepSeek V4**, and **GLM models**. I also use **Claude Code** for specific tasks. Honestly, I'm always testing everything, if there's a new model or agentic tool out there, I'm probably exploring it.
 
 ## Terminal
 
@@ -24,4 +24,4 @@ When starting something new: **Vite + React** on the frontend, **Flask** for the
 
 ## Hardware
 
-My main machine is a **MacBook M4 Pro**. I'm incredibly productive with it because I can work from anywhere—lying down, sitting, or standing. It's fast, quiet, stays cool, and has great battery life.
+My main machine is a **MacBook M4 Pro**. I'm incredibly productive with it because I can work from anywhere...lying down, sitting, or standing. It's fast, quiet, stays cool, and has great battery life.
