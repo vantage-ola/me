@@ -55,8 +55,24 @@ export function Layout({ children }: { children: ReactNode }) {
         fontSize: '0.8rem',
         color: 'var(--fg-muted)',
         textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '0.5rem',
       }}>
-        © {new Date().getFullYear()} Olaoluwa
+        <span>© {new Date().getFullYear()} Olaoluwa</span>
+        <span>
+          powered by{' '}
+          <a
+            href="https://github.com/groupsum/markdown_workspace"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'var(--accent)', textDecoration: 'none' }}
+          >
+            @mdwrk
+          </a>
+        </span>
       </footer>
     </div>
   )
