@@ -1,0 +1,18 @@
+---
+title: "Formula 1: Where Are The Female Drivers?"
+date: 2023-10-14
+tags: [formula1, motorsport, opinion]
+excerpt: It's not a gender issue. It's the nature of a sport that demands the best of the best.
+---
+
+Since the 1900s, women have actively been involved in various types of motorsports. Camille du Gast became the first woman to consistently race at an international level. Dorothy Levitt in 1903 set a world record in a Napier-engined speedboat and won her class at the Southport Speed Trial, earning numerous awards at the time. Recent success stories include Shirley Muldowney, known as the 'First Lady of Drag Racing,' who won multiple NHRA championships, and Sabine Schmitz, who dominated the Nürburgring and won the 24 Hours of Nürburgring twice in 1996 and 1997. The list goes on, with many successful female racing drivers in different disciplines who have enjoyed their share of motor racing glory.
+
+In a recent interview, Lewis Hamilton said: "I think I've raced against one female in my racing career in 26 years. And so, that needs to change." The established fact is that a decent number of women compete in motorsport around the world, and there are even successful ones. However, that number drastically reduces in bigger competitions and events, eventually reaching zero when it comes to Formula 1, the pinnacle of motorsport.
+
+Formula 1 is undoubtedly the biggest racing competition in the world, and it's not the biggest for no reason. It has countless fans around the world, prestigious manufacturers that build some of the fastest race cars globally, which battle it out in over 23 locations across the globe throughout the year. This competition boasts the fastest drivers from different nationalities who have been racing all their lives. To secure a drive in Formula 1 is probably one of the hardest things to achieve as a racing driver because there are currently only twenty seats occupied by drivers who have proven through their talent, experience, and consistent results throughout their careers.
+
+To increase your chances of making it into Formula 1, a common path involves starting karting at a young age, often around 7 years old, and continuing until around 15. Win multiple races and championships during this time, then progress to open-wheel racing series starting from Formula 4 and working your way up to Formula 2. Securing sponsorship from a driver academy can significantly aid your motorsport career by providing financial support, training, and a racing car. During your junior formula days, you must perform exceptionally by winning races to be eligible for an FIA super license. This license has several requirements, including holding an International Grade A license, passing an FIA theory test, and accumulating at least 40 points in the previous 3 years in any FIA-certified racing series.
+
+Once you secure a Formula 1 seat, there's no time to relax because you still have to impress and show results. Nyck De Vries demonstrated that after scoring points for Williams while temporarily replacing Alex Albon at the 2022 Italian Grand Prix, he was signed by Alpha Tauri for the 2023 season. However, his performance failed to meet expectations, leading to his dismissal halfway through the season.
+
+The competitiveness of the sport and the challenging entry requirements are why I believe there are currently no female Formula 1 drivers. I don't agree with those who claim we simply need to have a woman F1 driver — it isn't a gender issue, it's the nature of a sport that demands the best of the best. I want to see a female F1 driver soon, but she needs to demonstrate why she deserves to be there, not simply because she is female.
