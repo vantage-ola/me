@@ -24,4 +24,4 @@ When starting something new: **Vite + React** on the frontend, **Flask** for the
 
 ## Hardware
 
-My main machine is a **MacBook M4 Pro**. I'm incredibly productive with it because I can work from anywhere...lying down, sitting, or standing. It's fast, quiet, stays cool, and has great battery life.
+My main machine is a **MacBook M1 Pro**. I'm incredibly productive with it because I can work from anywhere...lying down, sitting, or standing. It's fast, quiet, stays cool, and has great battery life.
