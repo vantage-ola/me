@@ -1,6 +1,6 @@
 ---
 title: Matchup
-role: Founder
+role: Author
 period: 2026 – present
 status: active
 highlight: true

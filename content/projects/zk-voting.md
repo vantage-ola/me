@@ -1,6 +1,6 @@
 ---
 title: ZK Voting
-role: Student
+role: Author
 period: 2025 
 status: completed
 highlight: true
