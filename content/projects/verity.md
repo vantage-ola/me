@@ -2,7 +2,7 @@
 title: verity
 role: Author
 period: 2026
-status: completed
+status: active
 highlight: true
 tags: [python, walrus, sui, memwal, pydantic, typer, ai-agents, hackathon]
 links:

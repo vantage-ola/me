@@ -1,6 +1,6 @@
 ---
 title: Major League Hacking Fellowship - Meta
-role: Software Engineering Fellow
+role: Software Engineer
 period: Sept 2024 - Dec 2024
 status: completed
 highlight: true
