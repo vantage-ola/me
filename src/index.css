@@ -7,7 +7,7 @@ body {
   overflow: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--bg-app, #fff);
+  background: var(--bg-panel, #fff);
   color: var(--fg-primary, #111);
 }
 
@@ -18,4 +18,11 @@ a {
 img {
   max-width: 100%;
   display: block;
+}
+
+/* Fix inline code contrast for light-panel themes */
+.markdown-body .md-inline-code {
+  background: var(--bg-inset) !important;
+  border-color: var(--border-color) !important;
+  color: var(--fg-secondary) !important;
 }

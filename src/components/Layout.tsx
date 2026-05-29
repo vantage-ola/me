@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 const navLinks = [
   { to: '/', label: 'Home', end: true },
@@ -12,30 +13,37 @@ const navLinks = [
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font-ui)' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font-ui)', background: 'var(--bg-panel)' }}>
       <nav style={{
         padding: '1rem 2rem',
         borderBottom: '1px solid var(--border-color)',
-        display: 'flex',
-        gap: '1.5rem',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto 1fr',
         alignItems: 'center',
-        justifyContent: 'center',
+        background: 'var(--bg-panel)',
+        color: 'var(--fg-primary)',
       }}>
-        {navLinks.map(({ to, label, end }) => (
-          <NavLink
-            key={to}
-            to={to}
-            end={end}
-            style={({ isActive }) => ({
-              color: isActive ? 'var(--accent)' : 'var(--fg-secondary)',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-              fontWeight: isActive ? 600 : 400,
-            })}
-          >
-            {label}
-          </NavLink>
-        ))}
+        <div />
+        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+          {navLinks.map(({ to, label, end }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={end}
+              style={({ isActive }) => ({
+                color: isActive ? 'var(--accent)' : 'var(--fg-secondary)',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                fontWeight: isActive ? 600 : 400,
+              })}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <ThemeSwitcher />
+        </div>
       </nav>
 
       <main style={{
@@ -45,6 +53,7 @@ export function Layout({ children }: { children: ReactNode }) {
         margin: '0 auto',
         padding: '2.5rem 1.5rem',
         color: 'var(--fg-primary)',
+        background: 'var(--bg-panel)',
       }}>
         {children}
       </main>
@@ -60,6 +69,7 @@ export function Layout({ children }: { children: ReactNode }) {
         alignItems: 'center',
         flexWrap: 'wrap',
         gap: '0.5rem',
+        background: 'var(--bg-panel)',
       }}>
         <span>© {new Date().getFullYear()} Olaoluwa</span>
         <span>
