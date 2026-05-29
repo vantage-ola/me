@@ -5,7 +5,7 @@ export function PostItem({ post }: { post: Post }) {
   const { slug, frontmatter: f } = post
   return (
     <Link to={`/writing/${slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-      <article style={{
+      <article className="post-item" style={{
         padding: '1rem 0',
         borderBottom: '1px solid var(--border-color)',
         display: 'flex',

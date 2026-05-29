@@ -14,7 +14,7 @@ const navLinks = [
 export function Layout({ children }: { children: ReactNode }) {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font-ui)', background: 'var(--bg-panel)' }}>
-      <nav style={{
+      <nav className="site-nav" style={{
         padding: '1rem 2rem',
         borderBottom: '1px solid var(--border-color)',
         display: 'grid',
@@ -24,7 +24,7 @@ export function Layout({ children }: { children: ReactNode }) {
         color: 'var(--fg-primary)',
       }}>
         <div />
-        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+        <div className="site-nav-links" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
           {navLinks.map(({ to, label, end }) => (
             <NavLink
               key={to}
@@ -41,12 +41,12 @@ export function Layout({ children }: { children: ReactNode }) {
             </NavLink>
           ))}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <div className="site-nav-theme" style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <ThemeSwitcher />
         </div>
       </nav>
 
-      <main style={{
+      <main className="site-main" style={{
         flex: 1,
         maxWidth: 720,
         width: '100%',
@@ -58,7 +58,7 @@ export function Layout({ children }: { children: ReactNode }) {
         {children}
       </main>
 
-      <footer style={{
+      <footer className="site-footer" style={{
         padding: '1rem 2rem',
         borderTop: '1px solid var(--border-color)',
         fontSize: '0.8rem',
