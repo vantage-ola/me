@@ -12,7 +12,7 @@ links:
     url: https://github.com/facebook/lexical/commits?author=vantage-ola
 ---
 
-Contributed to **Lexical**, Meta's open-source text editor framework, through 12 weeks of deep technical exploration and collaborative research.
+Contributed to **Lexical**, Meta's open-source text editor framework, over 12 weeks.
 
 ## Contributions
 

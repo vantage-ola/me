@@ -12,7 +12,7 @@ links:
     url: https://docs.google.com/document/d/1FNRiNzHDRlyvIaD7HrHJItTFxdsB3NOtDU9wnA1DRSg/edit?usp=sharing
 ---
 
-A full-stack anonymous voting platform for student elections, built on the Semaphore ZKP protocol — voters prove eligibility without revealing identity.
+A full-stack anonymous voting platform for student elections, built on the Semaphore ZKP protocol. Voters prove eligibility without revealing identity.
 
 ## The Problem
 

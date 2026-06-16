@@ -8,10 +8,10 @@ I'm currently working on several projects. You can see what I'm up to on my GitH
 
 ## Reading
 
-I'm diving into technical writing, systems thinking, and product development—specifically how small teams and startups build great products. I'm also learning French on the side.
+Getting into technical writing, systems thinking, and product development — specifically how small teams build things that actually work. Also learning French on the side.
 
 ## Thinking about
 
-How to leverage software products to solve real-world problems for Nigerians.
+How software can solve problems specific to Nigeria, and what it takes to actually reach people there.
 
 _This page follows the [/now](https://nownownow.com/about) convention._

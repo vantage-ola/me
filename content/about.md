@@ -1,14 +1,14 @@
 # About
 
-Hi, I'm Olaoluwa, a software engineer who loves building software that solves real problems. Outside of coding, I'm passionate about motorsports and aspire to become a gentleman driver, touring racing circuits around the world.
+Hi, I'm Olaoluwa, a software engineer who builds things people actually use. Outside of coding, I'm into motorsports and working toward becoming a gentleman driver — touring circuits around the world is the long-term plan.
 
-I enjoy traveling and meeting people from diverse cultures. My goal is to build products that make a tangible impact while eventually competing in professional motorsports (I'm honing my skills in sim racing for now).
+I enjoy traveling and meeting people from very different places. The medium-term goal is to build products that matter while training seriously enough to eventually race. Sim racing is the current on-ramp.
 
 ## Background
 
-I started programming after graduating from secondary school. The COVID-19 lockdown gave me the time to dive into Python, which eventually led me to explore the broader web ecosystem. Since then, I've been constantly learning and pushing myself to build better software.
+I started programming after secondary school. The COVID-19 lockdown gave me the time to get into Python, which eventually pulled me into the broader web ecosystem. I haven't stopped building since.
 
-I'm comfortable working across the full stack TypeScript on the frontend, Python and Node on the backend with enough infrastructure knowledge to ship and scale projects independently.
+I'm comfortable across the full stack: TypeScript on the frontend, Python and Node on the backend, and enough infrastructure knowledge to ship and scale things without needing to hand off every deployment decision.
 
 ## Values
 
@@ -20,4 +20,4 @@ And I think tools should serve the person using them, not the other way around. 
 
 ## Get in touch
 
-The best way to reach me is on [GitHub](https://github.com/vantage-ola) or [X](https://x.com/vantage_ola). I'm always open to work, discussing new ideas, collaborations, or just chatting about interesting problems.
+The best way to reach me is on [GitHub](https://github.com/vantage-ola) or [X](https://x.com/vantage_ola). I'm open to interesting work, collaborations, or just talking through a problem.

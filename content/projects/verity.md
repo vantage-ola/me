@@ -12,7 +12,7 @@ links:
     url: https://pypi.org/project/walrus-verity/
 ---
 
-A proof-chain registry for AI agents — backed by Walrus for persistent, portable, verifiable memory. Built for the Sui Overflow hackathon, Walrus track.
+A proof-chain registry for AI agents, backed by Walrus for persistent, portable, verifiable memory. Built for the Sui Overflow hackathon, Walrus track.
 
 ## The Problem
 

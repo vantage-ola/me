@@ -16,7 +16,7 @@ links:
     url: https://wa.me/message/NC6TZI4FAUC4L1
 ---
 
-A WhatsApp-first AI marketplace connecting Nigerian buyers with verified local vendors — no apps, no websites, just chat.
+A WhatsApp-first AI marketplace connecting Nigerian buyers with verified local vendors. No apps, no websites, just chat.
 
 ## The Problem
 
