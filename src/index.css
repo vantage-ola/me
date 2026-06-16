@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
+:root {
+  --font-ui: 'Figtree', sans-serif;
+  --font-head: 'Figtree', sans-serif;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
