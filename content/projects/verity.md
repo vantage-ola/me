@@ -10,6 +10,12 @@ links:
     url: https://github.com/vantage-ola/verity
   - label: PyPI
     url: https://pypi.org/project/walrus-verity/
+  - label: Website
+    url: https://verity-web-one.vercel.app/
+  - label: Submission
+    url: https://www.deepsurge.xyz/projects/ec8a6367-3929-401e-859e-4c931dca54ec
+  - label: Pitch
+    url: https://drive.google.com/file/d/1zScP8j-JzXuWcvC0OkMezr93Yd30TJ1n/view?usp=sharing
 ---
 
 A proof-chain registry for AI agents, backed by Walrus. Built for the Sui Overflow 2026 hackathon, Walrus track.
