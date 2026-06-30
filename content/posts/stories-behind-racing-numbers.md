@@ -19,13 +19,13 @@ Before 2014, F1 numbers were based purely on where teams finished in the previou
 
 ## Le Mans and the WEC
 
-The 24 Hours of Le Mans and the FIA World Endurance Championship feature multiple classes racing on the same track at the same time — Hypercar, LMP2, and GT categories. To help spectators follow the action, each class uses distinct coloured number panels and headlights, making it easier to tell them apart at a glance.
+The 24 Hours of Le Mans and the FIA World Endurance Championship feature multiple classes racing on the same track at the same time, Hypercar, LMP2, and GT categories. To help spectators follow the action, each class uses distinct coloured number panels and headlights, making it easier to tell them apart at a glance.
 
-Certain traditions have formed over time. Toyota Gazoo Racing, for example, has long campaigned its cars as the #7 and #8 Hypercars — numbers that have become synonymous with their endurance racing programme. Spot a #7 or #8 Toyota in the field, and you're looking at one of the sport's most dominant modern machines.
+Certain traditions have formed over time. Toyota Gazoo Racing, for example, has long campaigned its cars as the #7 and #8 Hypercars, numbers that have become synonymous with their endurance racing programme. Spot a #7 or #8 Toyota in the field, and you're looking at one of the sport's most dominant modern machines.
 
 ## IMSA
 
-IMSA SportsCar Championship in North America takes a relaxed approach to car numbers. Teams usually get to pick their numbers on a first-come, first-served basis. Many teams stick to the same numbers year after year, building their own traditions. The #3 Corvette has been a mainstay of the GT ranks for decades, while the #10 Wayne Taylor Racing Acura is now instantly recognisable in the prototype field. Some numbers carry clever branding too — Porsche's #911 is an obvious nod to its legendary road car and has become part of the team's identity.
+IMSA SportsCar Championship in North America takes a relaxed approach to car numbers. Teams usually get to pick their numbers on a first-come, first-served basis. Many teams stick to the same numbers year after year, building their own traditions. The #3 Corvette has been a mainstay of the GT ranks for decades, while the #10 Wayne Taylor Racing Acura is now instantly recognisable in the prototype field. Some numbers carry clever branding too, Porsche's #911 is an obvious nod to its legendary road car and has become part of the team's identity.
 
 ## GT World Challenge: Regional Flexibility
 
@@ -33,7 +33,7 @@ The GT World Challenge series operates differently across regions. In Europe, nu
 
 ## Why Numbers Matter More Than You'd Think
 
-Racing numbers aren't just identification — they become part of a driver's and team's identity. Fans buy merchandise with specific numbers. Commentators use them as shorthand during races. "The 44 car" immediately tells F1 fans that Hamilton is in the discussion.
+Racing numbers aren't just identification, they become part of a driver's and team's identity. Fans buy merchandise with specific numbers. Commentators use them as shorthand during races. "The 44 car" immediately tells F1 fans that Hamilton is in the discussion.
 
 Some numbers become legendary. #3 in NASCAR belonged to Dale Earnhardt and is now retired. In F1, #27 was Gilles Villeneuve's number and later used by his son Jacques. These digits carry history and emotion.
 
@@ -49,4 +49,4 @@ For fans, numbers become a quick way to identify favourite drivers, especially w
 
 This identification becomes even more important in endurance racing, where driver changes mean you can't rely on helmets to identify who's behind the wheel. The car number stays constant even when drivers swap every few hours.
 
-The next time you're watching a race, pay attention to the numbers. There's probably a story behind why that driver chose those specific digits, and understanding the system makes following the action much easier. Whether it's Hamilton's #44, the legendary Le Mans #7 Toyota, or your local racer's lucky number from their karting days, every number on the grid has a reason for being there. And that's part of what makes motorsports so fascinating — even the smallest details have meaning.
+The next time you're watching a race, pay attention to the numbers. There's probably a story behind why that driver chose those specific digits, and understanding the system makes following the action much easier. Whether it's Hamilton's #44, the legendary Le Mans #7 Toyota, or your local racer's lucky number from their karting days, every number on the grid has a reason for being there. And that's part of what makes motorsports so fascinating, even the smallest details have meaning.

@@ -19,11 +19,11 @@ This is why qualifying matters so much, especially in series like Formula 1 wher
 
 This is probably the most common overtaking move in racing. The attacking driver follows closely behind, then brakes later into a corner to pull alongside or ahead. Sounds simple, but the timing has to be perfect. Brake too early and you don't make the pass. Too late and you either miss the corner or take out both cars.
 
-Lewis Hamilton is a master of this technique. His pass on Kimi Räikkönen at Monza was textbook late braking — he held his nerve, braked impossibly late, and made it stick.
+Lewis Hamilton is a master of this technique. His pass on Kimi Räikkönen at Monza was textbook late braking, he held his nerve, braked impossibly late, and made it stick.
 
 **The Switchback**
 
-When a driver tries to overtake on the outside of a corner, the defender can use the switchback. They let the attacker go around the outside, then use the better line to retake the position on corner exit. It's like giving ground to gain an advantage — a tactical retreat that later becomes an attack.
+When a driver tries to overtake on the outside of a corner, the defender can use the switchback. They let the attacker go around the outside, then use the better line to retake the position on corner exit. It's like giving ground to gain an advantage, a tactical retreat that later becomes an attack.
 
 **The Dummy Move**
 
@@ -33,7 +33,7 @@ Sometimes the best pass happens before you even attempt it. A good dummy involve
 
 **The Undercut and Overcut**
 
-In series with pit stops, timing your strategy around other drivers becomes crucial. The undercut involves pitting earlier than your rival, getting fresh tires, and using the pace advantage to jump ahead when they pit. The overcut is the opposite — staying out longer on old tires, building a gap while others pit, then using track position advantage.
+In series with pit stops, timing your strategy around other drivers becomes crucial. The undercut involves pitting earlier than your rival, getting fresh tires, and using the pace advantage to jump ahead when they pit. The overcut is the opposite, staying out longer on old tires, building a gap while others pit, then using track position advantage.
 
 **Tyre Management**
 
@@ -43,13 +43,13 @@ Modern racing is as much about managing your equipment as it is about pure speed
 
 **Pressure Application**
 
-Sometimes the best way to get past someone isn't to actually overtake them — it's to make them make a mistake. Staying close, showing your nose on every corner, making the driver ahead think about you instead of their own racing line. Eventually, they crack.
+Sometimes the best way to get past someone isn't to actually overtake them, it's to make them make a mistake. Staying close, showing your nose on every corner, making the driver ahead think about you instead of their own racing line. Eventually, they crack.
 
 Michael Schumacher was legendary at this. He'd sit right behind someone for laps, not necessarily trying to pass, but applying constant psychological pressure until they made an error.
 
 **The Reputation Factor**
 
-Some drivers have reputations that precede them. When someone like Max Verstappen appears in your mirrors, you know they're going to try something aggressive. That reputation can be used tactically — sometimes drivers will give up position more easily because they know the alternative is a risky fight or, worse, a crash.
+Some drivers have reputations that precede them. When someone like Max Verstappen appears in your mirrors, you know they're going to try something aggressive. That reputation can be used tactically, sometimes drivers will give up position more easily because they know the alternative is a risky fight or, worse, a crash.
 
 ## Defensive Tactics
 
@@ -63,15 +63,15 @@ In team-based racing, sometimes one driver becomes the sacrificial lamb for the 
 
 ## Series-Specific Tactics
 
-In Formula 1, DRS has created its own tactical meta-game. Drivers sometimes deliberately stay behind in the DRS zone to get a better overtaking opportunity, rather than making a move immediately — it's about timing your attack for maximum advantage.
+In Formula 1, DRS has created its own tactical meta-game. Drivers sometimes deliberately stay behind in the DRS zone to get a better overtaking opportunity, rather than making a move immediately, it's about timing your attack for maximum advantage.
 
-In oval racing like NASCAR, aerodynamics become crucial. Drivers work together in groups, using each other's slipstreams to go faster than they could alone. But alliances are temporary — your drafting partner can become your rival in the final laps.
+In oval racing like NASCAR, aerodynamics become crucial. Drivers work together in groups, using each other's slipstreams to go faster than they could alone. But alliances are temporary, your drafting partner can become your rival in the final laps.
 
 In endurance racing, tactics span multiple time periods. Teams might run conservatively early on to save the car, then turn up the pace in the final hours. Driver rotation strategies, fuel management, and equipment preservation all become tactical elements.
 
 ## The Mental Game
 
-Racing tactics aren't just about what you do with the car — they're about what you do with your opponent's mind. The best drivers are always thinking several moves ahead, like chess players. If I make this move, how will they respond? If I show them my strength here, will they be more cautious later? If I let them pass now, can I use their slipstream to catch the leader?
+Racing tactics aren't just about what you do with the car, they're about what you do with your opponent's mind. The best drivers are always thinking several moves ahead, like chess players. If I make this move, how will they respond? If I show them my strength here, will they be more cautious later? If I let them pass now, can I use their slipstream to catch the leader?
 
 Great tactical drivers can also read the flow of a race. They know when to push and when to wait. They can sense when a rival is struggling, when their own car is getting better, or when track conditions are about to change. This race craft often separates champions from fast drivers. Anyone can be quick in qualifying, but reading a race situation and making the right tactical choice? That's a different skill entirely.
 
@@ -79,4 +79,4 @@ Great tactical drivers can also read the flow of a race. They know when to push 
 
 As cars become more equal in performance, tactical intelligence becomes the differentiator. In spec series where everyone has similar equipment, the driver who makes better strategic choices often wins. Even in Formula 1, where car performance varies significantly, we've seen tactical brilliance overcome raw speed. Races are won in drivers' heads as much as with their feet.
 
-The next time you're watching a race, try to spot these tactical battles. Watch for the subtle positioning moves, the psychological games, the strategic patience. Racing isn't just about who has the fastest car — it's about who plays the game best.
+The next time you're watching a race, try to spot these tactical battles. Watch for the subtle positioning moves, the psychological games, the strategic patience. Racing isn't just about who has the fastest car, it's about who plays the game best.

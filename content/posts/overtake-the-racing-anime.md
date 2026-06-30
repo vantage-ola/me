@@ -7,7 +7,7 @@ excerpt: I didn't know I needed a Formula 4 anime until it existed.
 
 Other than motorsports, I'm a laid-back anime fan. I've watched a bunch of awesome shows, like Naruto, Demon Slayer, Jujutsu Kaisen, Hunter x Hunter, and many more. However, my anime list is almost nonexistent when it comes to racing and motorsport-themed series.
 
-"Initial D" is probably the most popular car anime that has a rich history and following, it garnered fans around the world and I can boldly say it had its part to play in the JDM culture we see among car enthusiasts today. Initial D isn't about racing on circuits or tracks though, which is quite a shame — it centers around Touge and street racing with Japanese cars from the late 80s to the 90s.
+"Initial D" is probably the most popular car anime that has a rich history and following, it garnered fans around the world and I can boldly say it had its part to play in the JDM culture we see among car enthusiasts today. Initial D isn't about racing on circuits or tracks though, which is quite a shame, it centers around Touge and street racing with Japanese cars from the late 80s to the 90s.
 
 The animated movie "Cars," while not Japanese anime, is one of the few animations that has a strong connection to motorsports, specifically oval racing like NASCAR in the USA.
 

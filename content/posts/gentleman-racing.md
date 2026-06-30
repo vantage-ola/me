@@ -15,7 +15,7 @@ The term "gentleman driver" might sound like a relic from the days of leather ja
 
 Unlike factory-backed pros who get paid to drive, gentleman drivers are the ones footing the bill. They bring their own funding to teams, securing a seat in top-tier series like the World Endurance Championship (WEC), IMSA, or GT racing around the world.
 
-But don't mistake this for just "paying to play." Many of these drivers are seriously skilled — they've climbed the ranks, earned their licenses, and proven they can hold their own on track. The "gentleman" label speaks to their amateur status and self-funded path, not their ability behind the wheel.
+But don't mistake this for just "paying to play." Many of these drivers are seriously skilled, they've climbed the ranks, earned their licenses, and proven they can hold their own on track. The "gentleman" label speaks to their amateur status and self-funded path, not their ability behind the wheel.
 
 ## The Cost of Racing
 
@@ -29,9 +29,9 @@ A single race weekend in a top-tier GT series can cost a gentleman driver anywhe
 
 ## Where Gentleman Racers Fit in Today's Racing World
 
-Gentleman drivers are actually the backbone of many racing series today. In WEC, roughly half the grid consists of gentleman drivers competing in the various amateur categories. They're not just making up numbers either — many are incredibly competitive and have won major races including the 24 Hours of Le Mans.
+Gentleman drivers are actually the backbone of many racing series today. In WEC, roughly half the grid consists of gentleman drivers competing in the various amateur categories. They're not just making up numbers either many are incredibly competitive and have won major races including the 24 Hours of Le Mans.
 
-What makes today's racing scene special is how it blends different levels of talent. Imagine this: you're braking into Les Combes at Spa, and in your mirrors is a former F1 driver. That's the reality for gentleman drivers — they get to compete alongside, and sometimes against, the sport's biggest names.
+What makes today's racing scene special is how it blends different levels of talent. Imagine this: you're braking into Les Combes at Spa, and in your mirrors is a former F1 driver. That's the reality for gentleman drivers, they get to compete alongside, and sometimes against, the sport's biggest names.
 
 GT racing has especially become the perfect playground for gentleman drivers. Series like GT World Challenge, IMSA's GTD class, and national GT championships all have dedicated Pro-Am categories. These classes create fair competition by pairing amateur drivers with professionals, making sure everyone gets to race hard while keeping it realistic.
 
@@ -45,7 +45,7 @@ Here's the advantage of my day job: tech pays well, and these skills travel anyw
 
 1. **Maximize the day job.** Remote work options and strategic relocations mean I can chase both career growth and racing opportunities where they exist.
 2. **Treat savings like training.** Every extra dollar goes into the racing fund. Think of it like saving for a house, except this "house" has a 500hp engine and slicks.
-3. **Licenses first.** Starting with SCCA basics or the EU equivalent, then working toward FIA certification. This part's actually affordable — it's the racing equivalent of getting your learner's permit.
+3. **Licenses first.** Starting with SCCA basics or the EU equivalent, then working toward FIA certification. This part's actually affordable, it's the racing equivalent of getting your learner's permit.
 
 The real work begins after the paperwork. I'll cut my teeth in budget-friendly amateur series, local races, track days, anything to learn real wheel-to-wheel combat. No ego, just seat time.
 
@@ -53,7 +53,7 @@ The dream? GT3 cars. WEC. Le Mans. Those circuits I've only raced in sims. It so
 
 ## Keeping It Real: The Hard Truths
 
-The cold, hard truth is that the racing world isn't designed for guys like me — normal people who discover this passion as adults. The traditional path starts with karting at age 6, bankrolled by parents with deep pockets. By the time most future pros hit their teens, they've already logged more track time than I'll get in my first five years of trying.
+The cold, hard truth is that the racing world isn't designed for guys like me, normal people who discover this passion as adults. The traditional path starts with karting at age 6, bankrolled by parents with deep pockets. By the time most future pros hit their teens, they've already logged more track time than I'll get in my first five years of trying.
 
 The numbers don't lie. The average age of a rookie GT3 driver is 22. Most professionals have 10,000+ hours of seat time before turning 18. Factory teams recruit almost exclusively from this pipeline.
 
@@ -71,7 +71,7 @@ The odds? Terrible. The reward? Priceless. I'd rather try and fail than wonder "
 
 Here's what gets me fired up about the gentleman driver path: it cracks open a world that used to be locked tight. Sure, you still need money, let's not pretend otherwise, but you don't need to be born into a racing dynasty or get scouted before puberty. This is about grown adults taking control of their dreams.
 
-The dream might be expensive, but it's not impossible. And in a world where so much feels uncertain, having a clear, concrete goal — even one as audacious as racing at Le Mans — gives life a certain focus and purpose.
+The dream might be expensive, but it's not impossible. And in a world where so much feels uncertain, having a clear, concrete goal even one as audacious as racing at Le Mans, gives life a certain focus and purpose.
 
 Is this crazy? Absolutely. But I'll take an impossible dream over no dream at all. After all, the worst that can happen is I end up with a stable tech career and some incredible track day experiences. And the best? Preparing for the 24 Hours at Le Mans or the Nürburgring.
 

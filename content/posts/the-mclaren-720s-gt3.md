@@ -11,10 +11,10 @@ Constrained by GT3 specifications and BoP, the 720S GT3 has achieved notable suc
 
 ## The McLaren 720S GT3X
 
-Before the release of the Evo GT3, McLaren's engineering team undertook a unique project: the construction of a GT3-style race car with a distinctive feature — it is ineligible for participation in established racing events. Yes, you read that correctly. The innovative minds at McLaren chose to build a car not tied down by the usual racing rules.
+Before the release of the Evo GT3, McLaren's engineering team undertook a unique project: the construction of a GT3-style race car with a distinctive feature, it is ineligible for participation in established racing events. Yes, you read that correctly. The innovative minds at McLaren chose to build a car not tied down by the usual racing rules.
 
 While sharing the same engine as its GT3 counterpart, the 720S GT3X differentiates itself by affording an additional 30 horsepower boost, activated at the press of a push-to-pass button. This model was designed for enthusiasts seeking an immersive track day experience, offering a glimpse into the potential of GT3 racing, only better. Distinguished by a revised roll cage design and interior layout, the 720S GT3X goes a step beyond by accommodating an optional passenger seat, probably intended for a track guide. Lighter than the GT3 and equipped with refined aerodynamics that enhance traction through corners, it exhibits remarkable acceleration and speed on the track.
 
-Outperforming the GT3 consistently by seconds on any track at any racing condition, this beast of a race car demonstrated its prowess by securing victory in the 2021 Goodwood Festival of Speed hill climb timed shootout final with a time of 45.01 seconds — over a second faster than the nearest competitor.
+Outperforming the GT3 consistently by seconds on any track at any racing condition, this beast of a race car demonstrated its prowess by securing victory in the 2021 Goodwood Festival of Speed hill climb timed shootout final with a time of 45.01 seconds, over a second faster than the nearest competitor.
 
 I didn't know about the GT3X before researching for this article, but it seems like the McLaren 720S GT3X is the race car I never knew I wanted. With its captivating aesthetics and exceptional performance, it truly sets itself apart.

@@ -5,7 +5,7 @@ tags: [motorsport, formula1, tyres, strategy]
 excerpt: Tyres don't just carry the car, they decide the race.
 ---
 
-I was lying down one day, thinking about the perfect race car. I was contemplating the aerodynamics, the engine, the airflow, the wheelbase, the engine placement, and all of the important components of a fast car. However, I forgot the most obvious thing — the tyres. Without tyres, the car cannot even move. If you watch Formula One, GT racing, Endurance racing and similar motorsports, you know that tyres can help you win races, from choosing the right composition to proper management of them during the races.
+I was lying down one day, thinking about the perfect race car. I was contemplating the aerodynamics, the engine, the airflow, the wheelbase, the engine placement, and all of the important components of a fast car. However, I forgot the most obvious thing, the tyres. Without tyres, the car cannot even move. If you watch Formula One, GT racing, Endurance racing and similar motorsports, you know that tyres can help you win races, from choosing the right composition to proper management of them during the races.
 
 ## Abu Dhabi 2021: Hamilton vs Verstappen
 

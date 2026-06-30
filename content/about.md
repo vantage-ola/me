@@ -1,6 +1,6 @@
 # About
 
-Hi, I'm Olaoluwa, a software engineer who builds things people actually use. Outside of coding, I'm into motorsports and working toward becoming a gentleman driver — touring circuits around the world is the long-term plan.
+Hi, I'm Olaoluwa, a software engineer who builds things people actually use. Outside of coding, I'm into motorsports and working toward becoming a gentleman driver, touring circuits around the world is the long-term plan.
 
 I enjoy traveling and meeting people from very different places. The medium-term goal is to build products that matter while training seriously enough to eventually race. Sim racing is the current on-ramp.
 

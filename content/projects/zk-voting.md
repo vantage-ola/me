@@ -16,7 +16,7 @@ A full-stack anonymous voting platform for student elections, built on the Semap
 
 ## The Problem
 
-Student union government elections at OOU ran on Google Forms — matriculation number + candidate selection. No anonymity, no tamper resistance, trivially fraudable.
+Student union government elections at OOU ran on Google Forms, matriculation number + candidate selection. No anonymity, no tamper resistance, trivially fraudable.
 
 ## What I Built
 

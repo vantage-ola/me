@@ -8,7 +8,7 @@ I'm currently working on several projects. You can see what I'm up to on my GitH
 
 ## Reading
 
-Getting into technical writing, systems thinking, and product development — specifically how small teams build things that actually work. Also learning French on the side.
+Getting into technical writing, systems thinking, and product development, specifically how small teams build things that actually work. Also learning French on the side.
 
 ## Thinking about
 
