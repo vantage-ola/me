@@ -10,7 +10,7 @@ links:
     url: https://github.com/vantage-ola/naijahealth
 ---
 
-A WhatsApp/Telegram bot that makes NAFDAC data actually searchable. Drugs, food, cosmetics, vaccines — ask in plain language, get a real answer.
+A WhatsApp/Telegram bot that makes NAFDAC data actually searchable. Drugs, food, cosmetics, vaccines. Ask in plain language, get a real answer.
 
 ## The Problem
 
