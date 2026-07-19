@@ -1,7 +1,9 @@
 const socials = [
   { label: 'GitHub', url: 'https://github.com/vantage-ola' },
-  { label: 'X', url: 'https://x.com/oosanya2' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/in/olaoluwa-oluwasanya/' },
+  { label: 'Medium', url: 'https://iloveracing.medium.com/' },
+  { label: 'X', url: 'https://x.com/oosanya2' },
+
 ]
 
 export function Hero() {
