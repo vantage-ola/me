@@ -70,3 +70,21 @@ img {
   border-color: var(--border-color) !important;
   color: var(--fg-secondary) !important;
 }
+
+/* Square off the fenced code block to match the site's boxy aesthetic */
+.markdown-body .md-code-block,
+.markdown-body pre,
+.markdown-body .md-code-surface,
+.markdown-body .md-code-language {
+  border-radius: 0;
+}
+
+/* Give the code block a visible outline so it reads as a box on light themes */
+.markdown-body .md-code-block {
+  border: var(--border-width, 1.5px) solid rgba(13, 15, 18, 0.22);
+}
+
+/* Drop the inner surface fill so there's only one box, not two */
+.markdown-body .md-code-surface {
+  background: transparent;
+}
