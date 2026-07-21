@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { FaAngleLeft } from 'react-icons/fa6'
+import { FaAngleLeft, FaArrowUpRightFromSquare } from 'react-icons/fa6'
 import { MarkdownRenderer } from '@mdwrk/markdown-renderer-react'
 import { loadProjects } from '../lib/content'
 
@@ -35,8 +35,8 @@ export function ProjectDetail() {
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           {f.links.map(({ label, url }) => (
             <a key={label} href={url} target="_blank" rel="noopener noreferrer"
-              style={{ color: 'var(--accent)', fontSize: '0.85rem', textDecoration: 'none' }}>
-              {label} ↗
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', color: 'var(--accent)', fontSize: '0.85rem', textDecoration: 'none' }}>
+              {label} <FaArrowUpRightFromSquare />
             </a>
           ))}
         </div>
