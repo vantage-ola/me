@@ -15,6 +15,9 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font-ui)', background: 'var(--bg-panel)' }}>
       <nav className="site-nav" style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 10,
         padding: '1rem 2rem',
         borderBottom: '1px solid var(--border-color)',
         display: 'grid',
