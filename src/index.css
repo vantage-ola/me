@@ -76,7 +76,7 @@ img {
 .markdown-body pre,
 .markdown-body .md-code-surface,
 .markdown-body .md-code-language {
-  border-radius: 0;
+  border-radius: 8px;
 }
 
 /* Give the code block a visible outline so it reads as a box on light themes */
