@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import { FaAngleLeft } from 'react-icons/fa6'
 import { MarkdownRenderer } from '@mdwrk/markdown-renderer-react'
 import { loadProjects } from '../lib/content'
 
@@ -12,7 +13,7 @@ export function ProjectDetail() {
     return (
       <div>
         <p style={{ color: 'var(--fg-muted)' }}>Project not found.</p>
-        <Link to="/projects" style={{ color: 'var(--accent)', fontSize: '0.9rem' }}>← Back to projects</Link>
+        <Link to="/projects" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', color: 'var(--accent)', fontSize: '0.9rem' }}><FaAngleLeft /> Back to projects</Link>
       </div>
     )
   }
@@ -21,8 +22,8 @@ export function ProjectDetail() {
 
   return (
     <>
-      <Link to="/projects" style={{ color: 'var(--fg-muted)', fontSize: '0.85rem', textDecoration: 'none', display: 'inline-block', marginBottom: '1.5rem' }}>
-        ← Projects
+      <Link to="/projects" style={{ color: 'var(--fg-muted)', fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', marginBottom: '1.5rem' }}>
+        <FaAngleLeft /> Projects
       </Link>
       <header style={{ marginBottom: '2rem' }}>
         <h1 style={{ margin: '0 0 0.4rem', fontSize: '1.75rem', fontWeight: 700, color: 'var(--fg-primary)' }}>
