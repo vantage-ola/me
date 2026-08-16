@@ -13,7 +13,7 @@ export function Hero() {
         Olaoluwa
       </h1>
       <p style={{ fontSize: '1.1rem', color: 'var(--fg-secondary)', margin: '0 0 1.25rem', lineHeight: 1.5 }}>
-        Software Engineer and Motorsports Enthusiast.
+        Software Engineer.
       </p>
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
         {socials.map(({ label, url }) => (
