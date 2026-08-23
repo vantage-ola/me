@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "imported": {
+    "fd7c7241c089": {
+      "slug": "warmth-is-not-a-yes",
+      "title": "Warmth Is Not A Yes",
+      "url": "https://iloveracing.medium.com/warmth-is-not-a-yes-fd7c7241c089",
+      "importedAt": "2026-07-18T00:00:00.000Z",
+      "note": "backfilled: ported to this repo by hand before the sync existed"
+    },
+    "4ec80cc69e0d": {
+      "slug": "everybody-above-the-fab-is-a-tenant",
+      "title": "Everybody Above The Fab Is A Tenant",
+      "url": "https://iloveracing.medium.com/everybody-above-the-fab-is-a-tenant-4ec80cc69e0d",
+      "importedAt": "2026-07-10T00:00:00.000Z",
+      "note": "backfilled: ported to this repo by hand before the sync existed"
+    },
+    "197a5b15d80f": {
+      "slug": "tactics-and-maneuvers-that-win-races",
+      "title": "Tactics and Maneuvers That Win Races",
+      "url": "https://iloveracing.medium.com/tactics-and-maneuvers-that-win-races-197a5b15d80f",
+      "importedAt": "2025-08-23T00:00:00.000Z",
+      "note": "backfilled: ported to this repo by hand before the sync existed"
+    },
+    "632b1beff1e6": {
+      "slug": "stories-behind-racing-numbers",
+      "title": "The Stories Behind Racing Numbers: How Drivers Get Their Digits",
+      "url": "https://iloveracing.medium.com/the-stories-behind-racing-numbers-how-drivers-get-their-digits-632b1beff1e6",
+      "importedAt": "2025-08-15T00:00:00.000Z",
+      "note": "backfilled: ported to this repo by hand before the sync existed"
+    },
+    "1028f3cb7f99": {
+      "slug": "gentleman-racing",
+      "title": "Gentleman Racing",
+      "url": "https://iloveracing.medium.com/gentleman-racing-1028f3cb7f99",
+      "importedAt": "2025-08-06T00:00:00.000Z",
+      "note": "backfilled: ported to this repo by hand before the sync existed"
+    },
+    "b4e8e3bba9ad": {
+      "slug": "the-mclaren-720s-gt3",
+      "title": "The McLaren 720S GT3: My Perfect Looking Race Car",
+      "url": "https://iloveracing.medium.com/the-mclaren-beauty-720ss-b4e8e3bba9ad",
+      "importedAt": "2023-12-15T00:00:00.000Z",
+      "note": "backfilled: ported to this repo by hand before the sync existed"
+    }
+  }
+}
