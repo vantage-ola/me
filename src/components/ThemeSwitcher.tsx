@@ -93,7 +93,7 @@ export function ThemeSwitcher() {
           style={{
             width: 14,
             height: 14,
-            borderRadius: 8,
+            borderRadius: 2,
             background: accent,
             border: active === id ? '2px solid var(--fg-primary)' : `2px solid ${bg}`,
             outline: active === id ? `1px solid ${accent}` : 'none',

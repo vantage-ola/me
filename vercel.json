@@ -1,3 +1,7 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "crons": [{ "path": "/api/sync-medium", "schedule": "0 6 * * *" }],
+  "functions": {
+    "api/sync-medium.ts": { "maxDuration": 60 }
+  },
+  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
 }

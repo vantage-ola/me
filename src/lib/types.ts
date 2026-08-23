@@ -14,6 +14,10 @@ export interface PostFrontmatter {
   date: string
   tags: string[]
   excerpt?: string
+  /** Medium post id, present only on posts imported by api/sync-medium.ts. */
+  medium_id?: string
+  /** Canonical URL of the Medium original, for attribution. */
+  medium_url?: string
 }
 
 export interface Project {
