@@ -514,6 +514,40 @@ export function uniqueSlug(desired: string, taken: Set<string>): string {
 
 const API = 'https://api.github.com'
 
+/**
+ * Base64 via Web APIs rather than Buffer.
+ *
+ * Vercel typechecks files in /api against the root tsconfig.json, and that file
+ * contains only project references, which Vercel does not support. The function
+ * therefore compiles without @types/node, so Node globals are unavailable. See
+ * the matching "types": [] in tsconfig.api.json, which makes the local
+ * typecheck enforce the same constraint.
+ */
+function encodeBase64(text: string): string {
+  const bytes = new TextEncoder().encode(text)
+  let binary = ''
+  for (let index = 0; index < bytes.length; index += 1) {
+    binary += String.fromCharCode(bytes[index])
+  }
+  return btoa(binary)
+}
+
+function decodeBase64(base64: string): string {
+  // GitHub wraps base64 payloads at 60 characters and atob rejects whitespace.
+  const binary = atob(base64.replace(/\s+/g, ''))
+  const bytes = new Uint8Array(binary.length)
+  for (let index = 0; index < binary.length; index += 1) {
+    bytes[index] = binary.charCodeAt(index)
+  }
+  return new TextDecoder().decode(bytes)
+}
+
+/** Reads an environment variable without depending on the Node process typings. */
+function readEnv(name: string): string | undefined {
+  const runtime = globalThis as { process?: { env?: Record<string, string | undefined> } }
+  return runtime.process?.env?.[name]
+}
+
 export interface GitHubConfig {
   token: string
   owner: string
@@ -592,7 +626,7 @@ export async function readTextFile(config: GitHubConfig, path: string): Promise<
   )
   if (!file?.content) return null
   if (file.encoding !== 'base64') return null
-  return Buffer.from(file.content, 'base64').toString('utf8')
+  return decodeBase64(file.content)
 }
 
 /**
@@ -627,7 +661,7 @@ export async function commitFiles(
       const blob = await request<{ sha: string }>(config, repoPath(config, '/git/blobs'), {
         method: 'POST',
         body: JSON.stringify({
-          content: Buffer.from(file.contents, 'utf8').toString('base64'),
+          content: encodeBase64(file.contents),
           encoding: 'base64',
         }),
       })
@@ -727,17 +761,17 @@ function commitMessage(posts: RenderedPost[]): string {
 }
 
 export async function GET(request: Request): Promise<Response> {
-  const secret = process.env.CRON_SECRET
-  const token = process.env.GITHUB_TOKEN
+  const secret = readEnv('CRON_SECRET')
+  const token = readEnv('GITHUB_TOKEN')
   // Vercel populates the VERCEL_GIT_* system variables for git-connected
   // projects, so the repository does not normally need configuring by hand.
   const repository =
-    process.env.GITHUB_REPOSITORY ??
-    (process.env.VERCEL_GIT_REPO_OWNER && process.env.VERCEL_GIT_REPO_SLUG
-      ? `${process.env.VERCEL_GIT_REPO_OWNER}/${process.env.VERCEL_GIT_REPO_SLUG}`
+    readEnv('GITHUB_REPOSITORY') ??
+    (readEnv('VERCEL_GIT_REPO_OWNER') && readEnv('VERCEL_GIT_REPO_SLUG')
+      ? `${readEnv('VERCEL_GIT_REPO_OWNER')}/${readEnv('VERCEL_GIT_REPO_SLUG')}`
       : undefined)
-  const branch = process.env.GITHUB_BRANCH ?? 'main'
-  const feedUrl = process.env.MEDIUM_FEED_URL ?? DEFAULT_FEED
+  const branch = readEnv('GITHUB_BRANCH') ?? 'main'
+  const feedUrl = readEnv('MEDIUM_FEED_URL') ?? DEFAULT_FEED
 
   if (!secret) return json({ error: 'CRON_SECRET is not configured' }, 500)
 

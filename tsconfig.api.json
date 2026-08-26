@@ -4,7 +4,12 @@
     "target": "es2023",
     "lib": ["ES2023", "DOM"],
     "module": "esnext",
-    "types": ["node"],
+    /* Deliberately empty. Vercel typechecks /api against the root tsconfig.json,
+       which only holds project references, and Vercel does not support those. The
+       function therefore compiles without @types/node in production, so denying
+       Node types here keeps the local check honest: any use of Buffer, process or
+       another Node global fails locally instead of on deploy. */
+    "types": [],
     "skipLibCheck": true,
 
     /* Bundler mode. api/sync-medium.ts is deliberately self-contained: Vercel
