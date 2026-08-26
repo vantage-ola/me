@@ -7,9 +7,11 @@
     "types": ["node"],
     "skipLibCheck": true,
 
-    /* Bundler mode */
+    /* Bundler mode. api/sync-medium.ts is deliberately self-contained: Vercel
+       transpiles /api files per file rather than bundling them, so a relative
+       import would need an extension that resolves both at build and at runtime.
+       Keeping the function dependency-free sidesteps that entirely. */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
