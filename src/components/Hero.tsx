@@ -8,29 +8,14 @@ const socials = [
 
 export function Hero() {
   return (
-    <section style={{ marginBottom: '3rem' }}>
-      <h1 style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--fg-primary)', margin: '0 0 0.5rem' }}>
-        Olaoluwa
-      </h1>
-      <p style={{ fontSize: '1.1rem', color: 'var(--fg-secondary)', margin: '0 0 1.25rem', lineHeight: 1.5 }}>
-        Software Engineer.
+    <section className="hero">
+      <h1>I build useful software for real people.</h1>
+      <p className="hero-intro">
+        I'm Olaoluwa. I work across the stack, turning practical ideas into products that are simple to use and built to last.
       </p>
-      <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+      <div className="hero-socials" aria-label="Social links">
         {socials.map(({ label, url }) => (
-          <a
-            key={label}
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: 'var(--accent)',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-              borderBottom: '1px solid transparent',
-            }}
-            onMouseEnter={e => (e.currentTarget.style.borderBottomColor = 'var(--accent)')}
-            onMouseLeave={e => (e.currentTarget.style.borderBottomColor = 'transparent')}
-          >
+          <a key={label} href={url} target="_blank" rel="noopener noreferrer">
             {label}
           </a>
         ))}

@@ -5,13 +5,7 @@ export function PostItem({ post }: { post: Post }) {
   const { slug, frontmatter: f } = post
   return (
     <Link to={`/writing/${slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-      <article className="post-item" style={{
-        padding: '1rem 0',
-        borderBottom: '1px solid var(--border-color)',
-        display: 'flex',
-        gap: '1rem',
-        alignItems: 'baseline',
-      }}>
+      <article className="post-item">
         <time style={{ fontSize: '0.8rem', color: 'var(--fg-muted)', flexShrink: 0, fontVariantNumeric: 'tabular-nums' }}>
           {f.date}
         </time>

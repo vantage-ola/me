@@ -13,7 +13,7 @@ export function PostDetail() {
     return (
       <div>
         <p style={{ color: 'var(--fg-muted)' }}>Post not found.</p>
-        <Link to="/writing" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', color: 'var(--accent)', fontSize: '0.9rem' }}><FaAngleLeft /> Back to writing</Link>
+        <Link to="/writing" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', color: 'var(--accent)', fontSize: '0.9rem' }}>Back to writing</Link>
       </div>
     )
   }
@@ -23,7 +23,7 @@ export function PostDetail() {
   return (
     <>
       <Link to="/writing" style={{ color: 'var(--fg-muted)', fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', marginBottom: '1.5rem' }}>
-        <FaAngleLeft /> Writing
+        <FaAngleLeft />Writing
       </Link>
       <header style={{ marginBottom: '2rem' }}>
         <h1 style={{ margin: '0 0 0.4rem', fontSize: '1.75rem', fontWeight: 700, color: 'var(--fg-primary)' }}>

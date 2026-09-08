@@ -3,7 +3,6 @@ import { Hero } from '../components/Hero'
 import { ProjectCard } from '../components/ProjectCard'
 import { PostItem } from '../components/PostItem'
 import { loadProjects, loadPosts } from '../lib/content'
-import { FaAngleRight } from "react-icons/fa6";
 
 const featured = loadProjects().filter(p => p.frontmatter.highlight)
 const recentPosts = loadPosts().slice(0, 3)
@@ -20,10 +19,10 @@ export function Home() {
               Projects
             </h2>
             <Link to="/projects" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.85rem', color: 'var(--accent)', textDecoration: 'none' }}>
-              All projects <FaAngleRight />
+              All projects
             </Link>
           </div>
-          <div style={{ display: 'grid', gap: '0.75rem' }}>
+          <div className="project-grid">
             {featured.map(p => <ProjectCard key={p.slug} project={p} />)}
           </div>
         </section>
@@ -36,7 +35,7 @@ export function Home() {
               Writing
             </h2>
             <Link to="/writing" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.85rem', color: 'var(--accent)', textDecoration: 'none' }}>
-              All posts <FaAngleRight />
+              All posts
             </Link>
           </div>
           {recentPosts.map(p => <PostItem key={p.slug} post={p} />)}

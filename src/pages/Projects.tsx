@@ -12,7 +12,7 @@ export function Projects() {
       {projects.length === 0 ? (
         <p style={{ color: 'var(--fg-muted)' }}>No projects yet.</p>
       ) : (
-        <div style={{ display: 'grid', gap: '0.75rem' }}>
+        <div className="project-grid">
           {projects.map(p => <ProjectCard key={p.slug} project={p} />)}
         </div>
       )}
