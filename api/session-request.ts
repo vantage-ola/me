@@ -78,6 +78,18 @@ export async function POST(request: Request): Promise<Response> {
   paymentUrl.searchParams.set('hours', String(hours))
   paymentUrl.searchParams.set('email', email)
 
+  // Only the owner receives this link and chooses whether to offer it.
+  // The signature binds the half-price checkout to this email and duration.
+  const offerExpires = Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60
+  const offerKey = await crypto.subtle.importKey(
+    'raw', new TextEncoder().encode(env.PAYSTACK_SECRET_KEY), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'],
+  )
+  const offerPayload = new TextEncoder().encode(`first-five:v1:${email.toLowerCase()}:${hours}:${offerExpires}`)
+  const offerSignature = new Uint8Array(await crypto.subtle.sign('HMAC', offerKey, offerPayload))
+  const offerHex = Array.from(offerSignature, (byte) => byte.toString(16).padStart(2, '0')).join('')
+  const discountedUrl = new URL(paymentUrl)
+  discountedUrl.searchParams.set('offer', `${offerExpires}.${offerHex}`)
+
   const message = [
     `Name: ${name}`,
     `Email: ${email}`,
@@ -88,8 +100,13 @@ export async function POST(request: Request): Promise<Response> {
     'What they want help with:',
     details,
     '',
-    'If you accept the request, send this payment link:',
+    'Standard payment link:',
     paymentUrl.toString(),
+    '',
+    'For one of the first five requests you approve, send this 50% off link instead:',
+    discountedUrl.toString(),
+    `Discounted total: ₦${(hours * 5000).toLocaleString('en-NG')}. Link expires in 30 days.`,
+    'Only send the discounted link to an approved person. Keep count of the five offers you grant.',
     'After Paystack confirms payment, send your Calendly link by email.',
   ].join('\n')
 
@@ -110,7 +127,17 @@ export async function POST(request: Request): Promise<Response> {
       }),
     })
     if (!response.ok) {
-      console.error('[session-request] Resend rejected request', response.status)
+      let resendError: { name?: string; message?: string } = {}
+      try {
+        resendError = await response.json() as typeof resendError
+      } catch {
+        // Keep the HTTP status when Resend does not return a JSON error.
+      }
+      console.error('[session-request] Resend rejected request', {
+        status: response.status,
+        name: resendError.name,
+        message: resendError.message,
+      })
       return json({ error: 'Your request could not be sent. Please try again later.' }, 502)
     }
     return json({ ok: true })

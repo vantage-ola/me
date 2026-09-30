@@ -1,4 +1,4 @@
-export async function startPayment(input: { email: string; kind: 'session'; hours: number } | { email: string; kind: 'support'; amount: number }): Promise<void> {
+export async function startPayment(input: { email: string; kind: 'session'; hours: number; offer?: string } | { email: string; kind: 'support'; amount: number }): Promise<void> {
   const response = await fetch('/api/paystack-init', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },

@@ -20,12 +20,12 @@ export async function GET(request: Request): Promise<Response> {
     })
     const result = await response.json() as {
       status?: boolean
-      data?: { status?: string; amount?: number; currency?: string; metadata?: { kind?: string; hours?: number } | string }
+      data?: { status?: string; amount?: number; currency?: string; metadata?: { kind?: string; hours?: number; offer?: string } | string }
     }
     if (!response.ok || !result.status || !result.data) return json({ error: 'Payment could not be verified.' }, 502)
 
     const { data } = result
-    let metadata: { kind?: string; hours?: number } = {}
+    let metadata: { kind?: string; hours?: number; offer?: string } = {}
     try {
       metadata = typeof data.metadata === 'string' ? JSON.parse(data.metadata) as typeof metadata : data.metadata ?? {}
     } catch {
@@ -33,7 +33,9 @@ export async function GET(request: Request): Promise<Response> {
     }
     const kind = metadata.kind
     const hours = metadata.hours
-    const expectedAmount = kind === 'session' && (hours === 1 || hours === 2) ? hours * 1_000_000 : null
+    const expectedAmount = kind === 'session' && (hours === 1 || hours === 2) &&
+      (metadata.offer === undefined || metadata.offer === 'first_five')
+      ? hours * (metadata.offer === 'first_five' ? 500_000 : 1_000_000) : null
     const valid = data.status === 'success' && data.currency === 'NGN' &&
       (kind === 'support' ? Number.isInteger(data.amount) && data.amount! >= 10_000 :
         kind === 'session' && data.amount === expectedAmount)

@@ -119,15 +119,28 @@ and refuses to run rather than risk duplicating the blog. `?bootstrap=1` overrid
 
 `/sessions` takes requests for one or two hours at ₦10,000 per hour. A Vercel
 function emails each request to `olaoluwasanya1@gmail.com`. The email includes a
-payment link for that person's chosen duration. Reply to the applicant first to
-confirm you can help, then send that link. The payment confirmation page asks
-the applicant to reply with their reference. Check it in your Paystack Dashboard
-before emailing your Calendly link.
+standard payment link and a signed 50% discount link for that person's chosen
+duration and email. For the first five requests you approve, send the discount
+link; send the standard link to everyone else. The discounted link expires after
+30 days. The signed link is checked on the server before Paystack checkout,
+and the Paystack return check accepts the corresponding half-price amount.
+Keep a manual count of approved discount recipients and remove the offer from
+`/sessions` once all five are allocated. A discounted link can be reused during
+its validity period, so only send it to a person you approve and check repeated
+payments in Paystack before treating them as additional bookings. The payment
+confirmation page asks the applicant to reply with their reference. Check it
+in your Paystack Dashboard before emailing your Calendly link.
 
 `/support` lets visitors choose an amount from ₦100 and pay through Paystack.
 Both payment flows initialize the amount on the server and verify the returned
 transaction before showing a success message. There is no need to create
 separate Paystack Payment Pages for each amount.
+For support payments, `/api/paystack-webhook` checks Paystack's signed
+`charge.success` event and sends a short thank you email to the payer through
+Resend. Set the live webhook URL in Paystack's API Keys & Webhooks settings to
+`https://olaoluwa.work/api/paystack-webhook`. The webhook is required for the
+email: the browser redirect alone does not send it. Payments made before the
+webhook is configured will not trigger a retroactive thank you email.
 
 Set these environment variables in Vercel for Production, Preview, and any
 other environment where the forms should work:
@@ -158,6 +171,11 @@ Create a Turnstile widget in Cloudflare for `olaoluwa.work`, then set its
 sitekey and secret in Vercel. For local tests, the page uses Cloudflare's
 published test sitekey. Use the matching test secret only in a non-production
 environment. Do not use either test key on the live site.
+If the live form says "Requests are temporarily unavailable," the production
+build is missing `VITE_TURNSTILE_SITE_KEY`. Add the widget's sitekey to the
+Vercel Production environment and redeploy; Vite embeds this value at build
+time. The matching `TURNSTILE_SECRET_KEY` must also be present for submissions
+to pass server verification.
 See [Cloudflare's setup guide](https://developers.cloudflare.com/turnstile/get-started/)
 for widget creation and domain settings.
 

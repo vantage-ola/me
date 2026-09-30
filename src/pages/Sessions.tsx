@@ -58,6 +58,11 @@ export function Sessions() {
       <h1>Let's work through what's keeping you stuck.</h1>
       <p className="page-lead">One-on-one help for people getting started with software engineering. Bring a CV, a project, or a question about what to learn next.</p>
 
+      <div className="intro-offer">
+        <strong>50% off for the first five people I approve</strong>
+        <p>That's ₦5,000 for one hour or ₦10,000 for two. Send a request below. I'll confirm by email if you get one of the five discounted spots before you pay.</p>
+      </div>
+
       <div className="offer-grid">
         <section className="offer-copy" aria-labelledby="session-about">
           <h2 id="session-about">What we can do</h2>
@@ -69,7 +74,7 @@ export function Sessions() {
           <p>One hour works well for a focused review. Book two hours if you want time to make changes together. For something longer, tell me what you have in mind.</p>
           <div className="offer-note">
             <span>How it works</span>
-            <p>Send a request below. I'll reply by email if I can help, with a Paystack payment link. Once payment is confirmed, I'll send my Calendly link so you can choose a time.</p>
+            <p>Send a request below. I'll reply by email if I can help, confirm your price, and send a Paystack payment link. Once payment is confirmed, I'll send my Calendly link so you can choose a time.</p>
           </div>
           <p className="offer-small">This is practical feedback from another software engineer. I can't promise a job or rewrite an entire CV during a call.</p>
           <Link className="text-link" to="/support">Just want to support my work?</Link>
@@ -99,7 +104,7 @@ export function Sessions() {
               <Turnstile onToken={onChallengeToken} resetCount={challengeResetCount} />
               {error && <p className="form-error" role="alert">{error}</p>}
               <button className="primary-button" type="submit" disabled={busy || !challengeToken}>{busy ? 'Sending…' : 'Send request'}</button>
-              <p className="form-footnote">No payment yet. I'll email you first to confirm the session is a fit. I'll only use your email to arrange this session.</p>
+              <p className="form-footnote">Prices above are the regular rates. I'll confirm any discount by email before payment. I'll only use your email to arrange this session.</p>
             </form>
           )}
         </section>

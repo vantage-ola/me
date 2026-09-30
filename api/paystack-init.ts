@@ -22,6 +22,7 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   let amountNaira: number
+  let discounted = false
   if (kind === 'session') {
     if (input.hours !== 1 && input.hours !== 2) return json({ error: 'Choose one or two hours.' }, 400)
     amountNaira = input.hours * 10_000
@@ -39,6 +40,24 @@ export async function POST(request: Request): Promise<Response> {
     return json({ error: 'Payments are unavailable right now. Please try again later.' }, 503)
   }
 
+  if (kind === 'session' && input.offer !== undefined) {
+    const offer = typeof input.offer === 'string' ? input.offer : ''
+    const match = /^(\d{10})\.([a-f0-9]{64})$/.exec(offer)
+    if (!match || Number(match[1]) <= Math.floor(Date.now() / 1000)) {
+      return json({ error: 'This discount link is invalid or has expired. Please ask for a new link.' }, 400)
+    }
+    const offerKey = await crypto.subtle.importKey(
+      'raw', new TextEncoder().encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['verify'],
+    )
+    const payload = new TextEncoder().encode(`first-five:v1:${email.toLowerCase()}:${input.hours}:${match[1]}`)
+    const signature = Uint8Array.from(match[2].match(/../g)!, (pair) => parseInt(pair, 16))
+    if (!await crypto.subtle.verify('HMAC', offerKey, signature, payload)) {
+      return json({ error: 'This discount link is invalid or has expired. Please ask for a new link.' }, 400)
+    }
+    discounted = true
+    amountNaira /= 2
+  }
+
   const callbackUrl = new URL('/payment-result', siteUrl)
   try {
     const response = await fetch('https://api.paystack.co/transaction/initialize', {
@@ -49,7 +68,7 @@ export async function POST(request: Request): Promise<Response> {
         amount: amountNaira * 100,
         currency: 'NGN',
         callback_url: callbackUrl.toString(),
-        metadata: JSON.stringify({ kind, ...(kind === 'session' ? { hours: input.hours } : {}) }),
+        metadata: JSON.stringify({ kind, ...(kind === 'session' ? { hours: input.hours, ...(discounted ? { offer: 'first_five' } : {}) } : {}) }),
       }),
     })
     const result = await response.json() as { status?: boolean; data?: { authorization_url?: string } }

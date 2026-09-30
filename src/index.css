@@ -391,6 +391,19 @@ a:hover > .post-item { padding-left: 0.5rem; border-color: var(--border-strong);
   align-items: start;
 }
 
+.intro-offer {
+  max-width: 720px;
+  margin: -0.9rem 0 2.5rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--accent);
+  border-radius: 7px;
+  background: var(--bg-elevated);
+}
+.intro-offer strong { color: var(--fg-primary); font-size: 0.98rem; }
+.intro-offer p { margin: 0.4rem 0 0; color: var(--fg-secondary); font-size: 0.91rem; line-height: 1.6; }
+.offer-highlight { color: var(--accent); font-weight: 650; }
+
 .offer-copy h2 {
   margin: 0 0 1rem;
   font-size: 1.25rem;
