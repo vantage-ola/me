@@ -8,6 +8,10 @@ import { Writing } from './pages/Writing'
 import { PostDetail } from './pages/PostDetail'
 import { Uses } from './pages/Uses'
 import { Now } from './pages/Now'
+import { Sessions } from './pages/Sessions'
+import { SessionPayment } from './pages/SessionPayment'
+import { Support } from './pages/Support'
+import { PaymentResult } from './pages/PaymentResult'
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
         <Route path="/writing/:slug" element={<PostDetail />} />
         <Route path="/uses" element={<Uses />} />
         <Route path="/now" element={<Now />} />
+        <Route path="/sessions" element={<Sessions />} />
+        <Route path="/sessions/pay" element={<SessionPayment />} />
+        <Route path="/support" element={<Support />} />
+        <Route path="/payment-result" element={<PaymentResult />} />
       </Routes>
     </Layout>
   )

@@ -114,3 +114,58 @@ and refuses to run rather than risk duplicating the blog. `?bootstrap=1` overrid
 - [`@mdwrk/ui-tokens`](https://www.npmjs.com/package/@mdwrk/ui-tokens) — CSS custom properties
 - [`react-router-dom`](https://reactrouter.com) v7 — client-side routing
 - [`yaml`](https://www.npmjs.com/package/yaml) — frontmatter parsing
+
+## Sessions and support payments
+
+`/sessions` takes requests for one or two hours at ₦10,000 per hour. A Vercel
+function emails each request to `olaoluwasanya1@gmail.com`. The email includes a
+payment link for that person's chosen duration. Reply to the applicant first to
+confirm you can help, then send that link. The payment confirmation page asks
+the applicant to reply with their reference. Check it in your Paystack Dashboard
+before emailing your Calendly link.
+
+`/support` lets visitors choose an amount from ₦100 and pay through Paystack.
+Both payment flows initialize the amount on the server and verify the returned
+transaction before showing a success message. There is no need to create
+separate Paystack Payment Pages for each amount.
+
+Set these environment variables in Vercel for Production, Preview, and any
+other environment where the forms should work:
+
+| Variable | Value |
+| --- | --- |
+| `RESEND_API_KEY` | API key from Resend. Keep it server-side. |
+| `RESEND_FROM` | Sender on a domain verified in Resend, such as `Olaoluwa <sessions@olaoluwa.work>`. |
+| `PAYSTACK_SECRET_KEY` | Paystack secret key. Start with a test key, then switch to live after testing. Keep it server-side. |
+| `SITE_URL` | Public portfolio origin, `https://olaoluwa.work`, with no trailing path. |
+| `VITE_TURNSTILE_SITE_KEY` | Public sitekey for a Cloudflare Turnstile widget allowed on `olaoluwa.work`. |
+| `TURNSTILE_SECRET_KEY` | Matching Turnstile secret key. Keep it server-side. |
+
+Resend must verify the sender's domain before production emails will deliver.
+The Gmail address above is the receiving inbox, not the sender. Do not put
+secret keys in a `VITE_` variable. Run a test session request and a Paystack
+test transaction before using live keys.
+
+### Protecting the request form
+
+The request function rejects missing or invalid Turnstile tokens on the server,
+checks the verified hostname and action, and only sends email after validation.
+Turnstile tokens expire and can only be used once. The form also has a hidden
+honeypot field, input limits, and a duplicate-email idempotency key. Production
+rejects Cloudflare's public test secret.
+
+Create a Turnstile widget in Cloudflare for `olaoluwa.work`, then set its
+sitekey and secret in Vercel. For local tests, the page uses Cloudflare's
+published test sitekey. Use the matching test secret only in a non-production
+environment. Do not use either test key on the live site.
+See [Cloudflare's setup guide](https://developers.cloudflare.com/turnstile/get-started/)
+for widget creation and domain settings.
+
+For a hard request cap, add a Vercel Firewall rate-limit rule for the path
+`/api/session-request` and method `POST`: fixed window, 3 requests per 10
+minutes per IP, with the default 429 response. Publish the rule to production.
+This is a dashboard setting and is not created by the code in this repository.
+Vercel counts rate limits per region, so this is a practical spam cap rather
+than an absolute global limit.
+See [Vercel's rate limiting guide](https://vercel.com/docs/vercel-firewall/vercel-waf/rate-limiting)
+for the dashboard steps.

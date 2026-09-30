@@ -14,6 +14,15 @@ export function Home() {
     <>
       <Hero />
 
+      <section className="home-session-callout">
+        <div>
+          <span className="page-eyebrow">One-on-one sessions</span>
+          <h2>Stuck on your next step in software engineering?</h2>
+          <p>Bring your CV, a project, or a question. We'll work through it together.</p>
+        </div>
+        <Link to="/sessions">See how sessions work <FaAngleRight /></Link>
+      </section>
+
       {featured.length > 0 && (
         <section style={{ marginBottom: '2.25rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.75rem' }}>

@@ -15,6 +15,7 @@ dist-ssr
 # Secrets and local env
 .env
 .env.*
+!.env.example
 opencode.json
 
 # Editor directories and files

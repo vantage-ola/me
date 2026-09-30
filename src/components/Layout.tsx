@@ -8,6 +8,8 @@ const navLinks = [
   { to: '/writing', label: 'Writing' },
   { to: '/uses', label: 'Uses' },
   { to: '/now', label: 'Now' },
+  { to: '/sessions', label: 'Sessions' },
+  { to: '/support', label: 'Support' },
 ]
 
 export function Layout({ children }: { children: ReactNode }) {
