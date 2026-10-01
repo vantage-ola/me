@@ -1,3 +1,5 @@
+import { resolveSession } from '../shared/session-pricing.mjs'
+
 const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env
 
 function json(body: unknown, status = 200): Response {
@@ -15,6 +17,8 @@ export async function POST(request: Request): Promise<Response> {
     return json({ error: 'Invalid request.' }, 400)
   }
 
+  if (!input || typeof input !== 'object' || Array.isArray(input)) return json({ error: 'Invalid request.' }, 400)
+
   const email = typeof input.email === 'string' ? input.email.trim().slice(0, 254) : ''
   const kind = input.kind
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || (kind !== 'support' && kind !== 'session')) {
@@ -23,9 +27,10 @@ export async function POST(request: Request): Promise<Response> {
 
   let amountNaira: number
   let discounted = false
+  const session = kind === 'session' ? resolveSession(input) : undefined
   if (kind === 'session') {
-    if (input.hours !== 1 && input.hours !== 2) return json({ error: 'Choose one or two hours.' }, 400)
-    amountNaira = input.hours * 10_000
+    if (!session) return json({ error: 'Please use a valid session payment link.' }, 400)
+    amountNaira = session.price
   } else {
     amountNaira = Number(input.amount)
     if (!Number.isInteger(amountNaira) || amountNaira < 100 || amountNaira > 1_000_000) {
@@ -49,7 +54,9 @@ export async function POST(request: Request): Promise<Response> {
     const offerKey = await crypto.subtle.importKey(
       'raw', new TextEncoder().encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['verify'],
     )
-    const payload = new TextEncoder().encode(`first-five:v1:${email.toLowerCase()}:${input.hours}:${match[1]}`)
+    const payload = new TextEncoder().encode(session!.id.startsWith('legacy-')
+      ? `first-five:v1:${email.toLowerCase()}:${input.hours}:${match[1]}`
+      : `first-five:v2:${email.toLowerCase()}:${session!.id}:${match[1]}`)
     const signature = Uint8Array.from(match[2].match(/../g)!, (pair) => parseInt(pair, 16))
     if (!await crypto.subtle.verify('HMAC', offerKey, signature, payload)) {
       return json({ error: 'This discount link is invalid or has expired. Please ask for a new link.' }, 400)
@@ -68,7 +75,11 @@ export async function POST(request: Request): Promise<Response> {
         amount: amountNaira * 100,
         currency: 'NGN',
         callback_url: callbackUrl.toString(),
-        metadata: JSON.stringify({ kind, ...(kind === 'session' ? { hours: input.hours, ...(discounted ? { offer: 'first_five' } : {}) } : {}) }),
+        metadata: JSON.stringify({ kind, ...(session ? {
+          hours: session.minutes / 60,
+          ...(!session.id.startsWith('legacy-') ? { package: session.id, pricing_version: 2 } : {}),
+          ...(discounted ? { offer: 'first_five' } : {}),
+        } : {}) }),
       }),
     })
     const result = await response.json() as { status?: boolean; data?: { authorization_url?: string } }

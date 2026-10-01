@@ -29,7 +29,7 @@ export function PostDetail() {
         <h1 style={{ margin: '0 0 0.4rem', fontSize: '1.75rem', fontWeight: 700, color: 'var(--fg-primary)' }}>
           {f.title}
         </h1>
-        <p style={{ margin: 0, color: 'var(--fg-muted)', fontSize: '0.85rem' }}>{f.date}</p>
+        <p style={{ margin: 0, color: 'var(--fg-muted)', fontSize: '0.85rem' }}><time dateTime={f.date}>{f.date}</time>{f.medium_url && <> · Also published on <a href={f.medium_url} target="_blank" rel="noopener noreferrer">Medium</a></>}</p>
       </header>
       <MarkdownRenderer markdown={content} profile="gfm-default" />
     </>

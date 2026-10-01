@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.prerender
+public/generated
 *.local
 
 # Secrets and local env

@@ -1,3 +1,5 @@
+import { resolveSession } from '../shared/session-pricing.mjs'
+
 const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env
 
 function json(body: unknown, status = 200): Response {
@@ -20,29 +22,32 @@ export async function GET(request: Request): Promise<Response> {
     })
     const result = await response.json() as {
       status?: boolean
-      data?: { status?: string; amount?: number; currency?: string; metadata?: { kind?: string; hours?: number; offer?: string } | string }
+      data?: { status?: string; amount?: number; currency?: string; metadata?: PaymentMetadata | string }
     }
     if (!response.ok || !result.status || !result.data) return json({ error: 'Payment could not be verified.' }, 502)
 
     const { data } = result
-    let metadata: { kind?: string; hours?: number; offer?: string } = {}
+    let metadata: PaymentMetadata = {}
     try {
       metadata = typeof data.metadata === 'string' ? JSON.parse(data.metadata) as typeof metadata : data.metadata ?? {}
     } catch {
       metadata = {}
     }
     const kind = metadata.kind
-    const hours = metadata.hours
-    const expectedAmount = kind === 'session' && (hours === 1 || hours === 2) &&
+    const session = metadata.pricing_version === 2 ? resolveSession({ packageId: metadata.package }) :
+      metadata.pricing_version === undefined && metadata.package === undefined ? resolveSession({ hours: metadata.hours }) : undefined
+    const expectedAmount = kind === 'session' && session &&
       (metadata.offer === undefined || metadata.offer === 'first_five')
-      ? hours * (metadata.offer === 'first_five' ? 500_000 : 1_000_000) : null
+      ? session.price * (metadata.offer === 'first_five' ? 50 : 100) : null
     const valid = data.status === 'success' && data.currency === 'NGN' &&
       (kind === 'support' ? Number.isInteger(data.amount) && data.amount! >= 10_000 :
-        kind === 'session' && data.amount === expectedAmount)
+        kind === 'session' && expectedAmount !== null && data.amount === expectedAmount)
 
-    return json({ paid: valid, kind: valid ? kind : null, hours: valid && kind === 'session' ? hours : null })
+    return json({ paid: valid, kind: valid ? kind : null, hours: valid && kind === 'session' ? session?.minutes && session.minutes / 60 : null, duration: valid && kind === 'session' ? session?.duration : null })
   } catch (error) {
     console.error('[paystack-verify] Verification failed', error)
     return json({ error: 'Payment could not be verified.' }, 502)
   }
 }
+
+type PaymentMetadata = { kind?: string; hours?: number; offer?: string; package?: string; pricing_version?: number }

@@ -117,7 +117,21 @@ and refuses to run rather than risk duplicating the blog. `?bootstrap=1` overrid
 
 ## Sessions and support payments
 
-`/sessions` takes requests for one or two hours at ₦10,000 per hour. A Vercel
+`/sessions` offers three packages: one hour for ₦10,000, 90 minutes for
+₦13,500, and two hours for ₦17,000. The longer packages show their savings
+against the ₦10,000 hourly rate. Prices, durations, and package identifiers
+live in `shared/session-pricing.mjs`, shared by the form, payment functions,
+and flyer. The first-five prices are ₦5,000, ₦6,750, and ₦8,500.
+
+A fourth option accepts requests for 3–20 hours. Agree the scope, total price,
+and whether to split the time across calls by email. Create a Paystack invoice
+or Payment Page for that agreed quote; fixed package checkout does not accept
+custom amounts. The first-five discount also applies to an agreed custom quote.
+
+Existing payment links sent before the package change still honor their
+original ₦10,000 per hour price and signed discount.
+
+For the three fixed packages, A Vercel
 function emails each request to `olaoluwasanya1@gmail.com`. The email includes a
 standard payment link and a signed 50% discount link for that person's chosen
 duration and email. For the first five requests you approve, send the discount
@@ -125,7 +139,7 @@ link; send the standard link to everyone else. The discounted link expires after
 30 days. The signed link is checked on the server before Paystack checkout,
 and the Paystack return check accepts the corresponding half-price amount.
 Keep a manual count of approved discount recipients and remove the offer from
-`/sessions` once all five are allocated. A discounted link can be reused during
+`/sessions` and the flyer once all five are allocated. A discounted link can be reused during
 its validity period, so only send it to a person you approve and check repeated
 payments in Paystack before treating them as additional bookings. The payment
 confirmation page asks the applicant to reply with their reference. Check it
@@ -187,3 +201,58 @@ Vercel counts rate limits per region, so this is a practical spam cap rather
 than an absolute global limit.
 See [Vercel's rate limiting guide](https://vercel.com/docs/vercel-firewall/vercel-waf/rate-limiting)
 for the dashboard steps.
+
+
+## Session flyer
+
+Open `/sessions/promo` for a responsive flyer in the site's dark and cyan theme.
+Choose **Portrait** (1080 × 1350) or **Story** (1080 × 1920), then download the
+PNG. Both sizes show the first-five offer, crossed-out regular prices, and the
+session request URL. After the five discounted approvals are allocated, update
+`src/components/SessionPoster.tsx` and `src/pages/Sessions.tsx` to retire the offer.
+
+`npm run build` generates PNG and SVG files in `public/generated` and copies
+them into `dist/generated`. These files are regenerated rather than committed.
+The flyer layout lives in `src/components/SessionPoster.tsx`; prices come from
+the shared package file. Run the build once before downloading images in local
+development. Figtree is bundled under its OFL license; static font files make
+image exports work without installed system fonts or an external font request.
+
+## SEO and link previews
+
+The build renders every known page, blog post, and project into its own HTML
+file. Article content, links, and metadata are available before JavaScript runs.
+React hydrates the rendered page for navigation and forms. Payment pages render
+in the browser because their contents depend on private query parameters.
+
+Each route gets a title, description, canonical URL, Open Graph and Twitter
+metadata, and a generated 1200 × 630 preview image. Posts include publication
+and modification dates and `BlogPosting` structured data; projects include
+`CreativeWork` data. Breadcrumbs and author information are included where
+applicable. Metadata also updates during client-side navigation.
+
+Post frontmatter supports `excerpt` for the description, `updated` for the
+modification date, and an optional absolute `canonical_url` if another URL is
+the preferred original. Imported Medium posts retain their source attribution;
+their portfolio URL is canonical by default. Search engines may choose Medium
+as the original when the same article appears on both sites.
+
+The build writes `/sitemap.xml`, `/robots.txt`, and a custom 404 page. Payment
+and flyer utility pages are marked `noindex` and excluded from the sitemap.
+Vercel uses `cleanUrls` to serve route-specific HTML; keep the old catch-all
+rewrite removed so crawlers receive the correct page and unknown URLs get 404.
+New posts imported by the Medium sync appear in HTML, the sitemap, and preview
+images on the following deployment.
+
+After deployment, verify `olaoluwa.work` in Google Search Console, submit
+`https://olaoluwa.work/sitemap.xml`, and inspect the home, sessions, and a blog
+URL. Account verification and sitemap submission are dashboard steps, not
+performed by this build. Preview services may cache the previous metadata.
+
+### Checks
+
+Run `npm run build`, `npm run lint`, and `npm run check:build`. The build check
+validates page metadata, structured data, internal links, sitemap contents,
+and image sizes. With Node 22.6 or newer, run `npm test` for request,
+price, signed-discount, legacy-link, and payment verification checks. These
+checks intercept all outgoing requests and use fake credentials.

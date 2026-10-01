@@ -1,11 +1,14 @@
 import { useCallback, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Turnstile } from '../components/Turnstile'
+import { formatNaira, sessionPackages } from '../../shared/session-pricing.mjs'
 
 const focusOptions = ['CV review', 'Portfolio or project review', 'Getting started', 'Something else']
 
 export function Sessions() {
-  const [hours, setHours] = useState(1)
+  const [packageId, setPackageId] = useState('workshop')
+  const [customHours, setCustomHours] = useState(3)
+  const selected = sessionPackages.find((option) => option.id === packageId)
   const [busy, setBusy] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
@@ -31,7 +34,8 @@ export function Sessions() {
         body: JSON.stringify({
           name: values.get('name'),
           email: values.get('email'),
-          hours,
+          packageId,
+          ...(packageId === 'custom' ? { customHours } : {}),
           focus: values.get('focus'),
           link: values.get('link'),
           details: values.get('details'),
@@ -60,8 +64,29 @@ export function Sessions() {
 
       <div className="intro-offer">
         <strong>50% off for the first five people I approve</strong>
-        <p>That's ₦5,000 for one hour or ₦10,000 for two. Send a request below. I'll confirm by email if you get one of the five discounted spots before you pay.</p>
+        <p>Pick a session below. I'll confirm by email if you get one of the five discounted spots before you pay. The discount also applies to an agreed custom quote.</p>
       </div>
+
+      <fieldset className="session-plans">
+        <legend>Choose how much time you need</legend>
+        <div className="session-plan-grid">
+          {sessionPackages.map((option) => <label key={option.id} className={`session-plan${packageId === option.id ? ' selected' : ''}`}>
+            <input type="radio" name="session-package" value={option.id} checked={packageId === option.id} onChange={() => setPackageId(option.id)} />
+            <span className="plan-duration">{option.duration}</span>
+            <strong className="plan-name">{option.name}</strong>
+            <span className="plan-description">{option.description}</span>
+            <span className="plan-price">{formatNaira(option.price)}</span>
+            <span className="plan-saving">{option.hourlyPrice > option.price ? <><s>{formatNaira(option.hourlyPrice)}</s> at the hourly rate. Save {formatNaira(option.hourlyPrice - option.price)}.</> : 'The regular hourly rate.'}</span>
+            <span className="plan-intro"><span>First-five offer</span><span><s>{formatNaira(option.price)}</s> <strong>{formatNaira(option.price / 2)}</strong></span></span>
+            {option.id === 'workshop' && <span className="plan-fit">Good for a review + changes</span>}
+          </label>)}
+        </div>
+        <label className={`session-plan custom-plan${packageId === 'custom' ? ' selected' : ''}`}>
+          <input type="radio" name="session-package" value="custom" checked={packageId === 'custom'} onChange={() => setPackageId('custom')} />
+          <span><strong className="plan-name">Multiple hours</strong><span className="plan-description">Need more than two hours or a few sessions? Tell me what you're working on and we'll agree a plan.</span></span>
+          <strong className="custom-quote">Ask for a quote</strong>
+        </label>
+      </fieldset>
 
       <div className="offer-grid">
         <section className="offer-copy" aria-labelledby="session-about">
@@ -71,7 +96,7 @@ export function Sessions() {
             <li><strong>Portfolio or project review</strong><span>Look at what you've built and how you explain it.</span></li>
             <li><strong>Getting started</strong><span>Talk through your current skills and pick useful next steps.</span></li>
           </ul>
-          <p>One hour works well for a focused review. Book two hours if you want time to make changes together. For something longer, tell me what you have in mind.</p>
+          <p>An hour works well for one focused review. Ninety minutes gives us time to make changes together. Choose two hours for a longer walkthrough, or ask about splitting a few hours across sessions.</p>
           <div className="offer-note">
             <span>How it works</span>
             <p>Send a request below. I'll reply by email if I can help, confirm your price, and send a Paystack payment link. Once payment is confirmed, I'll send my Calendly link so you can choose a time.</p>
@@ -81,7 +106,7 @@ export function Sessions() {
         </section>
 
         <section className="offer-form-panel" aria-labelledby="request-title">
-          <div className="form-heading"><div><span className="form-kicker">Session request</span><h2 id="request-title">Tell me what you need</h2></div><span className="price-mark">₦10,000 <small>/ hour</small></span></div>
+          <div className="form-heading"><div><span className="form-kicker">Session request</span><h2 id="request-title">Tell me what you need</h2></div></div>
           {sent ? (
             <div className="form-success" role="status">
               <h3>Request sent.</h3>
@@ -94,9 +119,8 @@ export function Sessions() {
                 <label> Name <input name="name" type="text" autoComplete="name" maxLength={100} required /></label>
                 <label> Email <input name="email" type="email" autoComplete="email" maxLength={254} required /></label>
               </div>
-              <fieldset className="duration-field"><legend>How much time?</legend><div className="duration-options">
-                {[1, 2].map((value) => <label key={value} className={hours === value ? 'duration-option selected' : 'duration-option'}><input type="radio" name="hours" value={value} checked={hours === value} onChange={() => setHours(value)} /><span>{value} {value === 1 ? 'hour' : 'hours'}</span><strong>₦{(value * 10000).toLocaleString('en-NG')}</strong></label>)}
-              </div></fieldset>
+              <p className="selected-session" role="status">{selected ? `${selected.duration} · ${formatNaira(selected.price)} before any first-five discount` : 'Multiple hours · price agreed by email'}</p>
+              {packageId === 'custom' && <label>How many hours are you thinking of? <input type="number" min={3} max={20} step={1} value={customHours} onChange={(event) => setCustomHours(Number(event.target.value))} required /><span className="optional">We can split these across a few calls.</span></label>}
               <label>What should we focus on? <select name="focus" required defaultValue=""><option value="" disabled>Choose one</option>{focusOptions.map((focus) => <option key={focus}>{focus}</option>)}</select></label>
               <label>What would you like help with? <textarea name="details" rows={5} minLength={12} maxLength={3000} placeholder="A few sentences are enough." required /></label>
               <label>Relevant link <span className="optional">(optional)</span><input name="link" type="url" placeholder="CV, portfolio, GitHub, or project link" maxLength={500} /></label>
@@ -104,7 +128,7 @@ export function Sessions() {
               <Turnstile onToken={onChallengeToken} resetCount={challengeResetCount} />
               {error && <p className="form-error" role="alert">{error}</p>}
               <button className="primary-button" type="submit" disabled={busy || !challengeToken}>{busy ? 'Sending…' : 'Send request'}</button>
-              <p className="form-footnote">Prices above are the regular rates. I'll confirm any discount by email before payment. I'll only use your email to arrange this session.</p>
+              <p className="form-footnote">No payment yet. I'll confirm your price and any discount by email first. I'll only use your email to arrange this session.</p>
             </form>
           )}
         </section>

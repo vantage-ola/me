@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
 import { About } from './pages/About'
@@ -12,10 +12,15 @@ import { Sessions } from './pages/Sessions'
 import { SessionPayment } from './pages/SessionPayment'
 import { Support } from './pages/Support'
 import { PaymentResult } from './pages/PaymentResult'
+import { Seo } from './components/Seo'
+import { NotFound } from './pages/NotFound'
+import { SessionPromo } from './pages/SessionPromo'
 
 function App() {
+  const { pathname } = useLocation()
+  if (pathname.replace(/\/+$/, '') === '/sessions/promo') return <><Seo /><SessionPromo /></>
   return (
-    <Layout>
+    <><Seo /><Layout>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -29,8 +34,9 @@ function App() {
         <Route path="/sessions/pay" element={<SessionPayment />} />
         <Route path="/support" element={<Support />} />
         <Route path="/payment-result" element={<PaymentResult />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </Layout>
+    </Layout></>
   )
 }
 

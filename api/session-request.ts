@@ -1,3 +1,5 @@
+import { formatNaira, resolveSession } from '../shared/session-pricing.mjs'
+
 const recipient = 'olaoluwasanya1@gmail.com'
 const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env
 
@@ -24,6 +26,8 @@ export async function POST(request: Request): Promise<Response> {
     return json({ error: 'Invalid request.' }, 400)
   }
 
+  if (!input || typeof input !== 'object' || Array.isArray(input)) return json({ error: 'Invalid request.' }, 400)
+
   // A hidden field catches basic form spam without adding friction for visitors.
   if (field(input.website, 200)) return json({ ok: true })
 
@@ -34,10 +38,13 @@ export async function POST(request: Request): Promise<Response> {
   const link = field(input.link, 500)
   const challengeToken = field(input.challengeToken, 2048)
   const hours = input.hours
+  const session = resolveSession(input)
+  const custom = input.packageId === 'custom'
+  const customHours = input.customHours
 
   if (name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || details.length < 12 ||
       !['CV review', 'Portfolio or project review', 'Getting started', 'Something else'].includes(focus) ||
-      (hours !== 1 && hours !== 2) || !challengeToken ||
+      (!session && !(custom && Number.isInteger(customHours) && Number(customHours) >= 3 && Number(customHours) <= 20)) || !challengeToken ||
       (link && !/^https?:\/\/\S+$/i.test(link))) {
     return json({ error: 'Please check the form and try again.' }, 400)
   }
@@ -74,43 +81,51 @@ export async function POST(request: Request): Promise<Response> {
     return json({ error: 'Verification is unavailable right now. Please try again later.' }, 502)
   }
 
-  const paymentUrl = new URL('/sessions/pay', env.SITE_URL)
-  paymentUrl.searchParams.set('hours', String(hours))
-  paymentUrl.searchParams.set('email', email)
-
-  // Only the owner receives this link and chooses whether to offer it.
-  // The signature binds the half-price checkout to this email and duration.
-  const offerExpires = Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60
-  const offerKey = await crypto.subtle.importKey(
-    'raw', new TextEncoder().encode(env.PAYSTACK_SECRET_KEY), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'],
-  )
-  const offerPayload = new TextEncoder().encode(`first-five:v1:${email.toLowerCase()}:${hours}:${offerExpires}`)
-  const offerSignature = new Uint8Array(await crypto.subtle.sign('HMAC', offerKey, offerPayload))
-  const offerHex = Array.from(offerSignature, (byte) => byte.toString(16).padStart(2, '0')).join('')
-  const discountedUrl = new URL(paymentUrl)
-  discountedUrl.searchParams.set('offer', `${offerExpires}.${offerHex}`)
+  let paymentInstructions = [
+    'This is a custom request. Agree the scope, total price, and how the hours will be split by email.',
+    'If this is one of the first five people you approve, apply 50% off your agreed quote.',
+    'Send a Paystack invoice or Payment Page for the agreed amount. Do not use the fixed session checkout for this quote.',
+  ]
+  if (session) {
+    const paymentUrl = new URL('/sessions/pay', env.SITE_URL)
+    const legacy = session.id.startsWith('legacy-')
+    paymentUrl.searchParams.set(legacy ? 'hours' : 'package', legacy ? String(hours) : session.id)
+    paymentUrl.searchParams.set('email', email)
+    // The owner chooses who gets the offer; applicants never receive this token from the API.
+    const offerExpires = Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60
+    const offerKey = await crypto.subtle.importKey(
+      'raw', new TextEncoder().encode(env.PAYSTACK_SECRET_KEY), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'],
+    )
+    const offerPayload = new TextEncoder().encode(legacy
+      ? `first-five:v1:${email.toLowerCase()}:${hours}:${offerExpires}`
+      : `first-five:v2:${email.toLowerCase()}:${session.id}:${offerExpires}`)
+    const offerSignature = new Uint8Array(await crypto.subtle.sign('HMAC', offerKey, offerPayload))
+    const offerHex = Array.from(offerSignature, (byte) => byte.toString(16).padStart(2, '0')).join('')
+    const discountedUrl = new URL(paymentUrl)
+    discountedUrl.searchParams.set('offer', `${offerExpires}.${offerHex}`)
+    paymentInstructions = [
+      'Standard payment link:', paymentUrl.toString(), '',
+      'For one of the first five people you approve, send this 50% off link instead:', discountedUrl.toString(),
+      `Discounted total: ${formatNaira(session.price / 2)}. Link expires in 30 days.`,
+      'Only send the discounted link to an approved person. Keep count of the five offers you grant.',
+    ]
+  }
 
   const message = [
     `Name: ${name}`,
     `Email: ${email}`,
-    `Length: ${hours} ${hours === 1 ? 'hour' : 'hours'} (₦${(hours * 10000).toLocaleString('en-NG')})`,
+    `Session: ${session ? `${session.name}, ${session.duration} (${formatNaira(session.price)})` : `${customHours} hours, custom quote requested`}`,
     `Focus: ${focus}`,
     `Link: ${link || 'None provided'}`,
     '',
     'What they want help with:',
     details,
     '',
-    'Standard payment link:',
-    paymentUrl.toString(),
-    '',
-    'For one of the first five requests you approve, send this 50% off link instead:',
-    discountedUrl.toString(),
-    `Discounted total: ₦${(hours * 5000).toLocaleString('en-NG')}. Link expires in 30 days.`,
-    'Only send the discounted link to an approved person. Keep count of the five offers you grant.',
+    ...paymentInstructions,
     'After Paystack confirms payment, send your Calendly link by email.',
   ].join('\n')
 
-  const fingerprint = new TextEncoder().encode(JSON.stringify({ name, email, hours, focus, details, link }))
+  const fingerprint = new TextEncoder().encode(JSON.stringify({ name, email, session: session?.id, customHours: custom ? customHours : undefined, focus, details, link }))
   const digest = await crypto.subtle.digest('SHA-256', fingerprint)
   const idempotencyKey = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')
 

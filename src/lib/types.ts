@@ -7,6 +7,7 @@ export interface ProjectFrontmatter {
   tags: string[]
   links: { label: string; url: string }[]
   cover?: string
+  description?: string
 }
 
 export interface PostFrontmatter {
@@ -14,9 +15,12 @@ export interface PostFrontmatter {
   date: string
   tags: string[]
   excerpt?: string
+  updated?: string
+  /** Optional preferred URL when this post should canonicalize elsewhere. */
+  canonical_url?: string
   /** Medium post id, present only on posts imported by api/sync-medium.ts. */
   medium_id?: string
-  /** Canonical URL of the Medium original, for attribution. */
+  /** URL of the Medium original, for attribution. */
   medium_url?: string
 }
 
