@@ -20,4 +20,4 @@ And I think tools should serve the person using them, not the other way around. 
 
 ## Get in touch
 
-The best way to reach me is on [GitHub](https://github.com/vantage-ola) or [X](https://x.com/vantage_ola). I'm open to interesting work, collaborations, or just talking through a problem.
+The best way to reach me is on [GitHub](https://github.com/vantage-ola) or [X](https://x.com/oosanya2). I'm open to interesting work, collaborations, or just talking through a problem.
