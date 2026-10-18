@@ -35,11 +35,13 @@ for (const path of paths) {
   const seo = getPageSeo(path)
   await png(socialImage(seo), resolve(root, 'public', new URL(seo.image).pathname.slice(1)))
 }
-for (const story of [false, true]) {
-  const svg = renderPoster(story)
-  const name = `sessions-${story ? 'story' : 'portrait'}`
-  await writeFile(`${generated}/${name}.svg`, svg)
-  await png(svg, `${generated}/${name}.png`)
+for (const free of [false, true]) {
+  for (const story of [false, true]) {
+    const svg = renderPoster(story, free)
+    const name = `sessions-${free ? 'free-' : ''}${story ? 'story' : 'portrait'}`
+    await writeFile(`${generated}/${name}.svg`, svg)
+    await png(svg, `${generated}/${name}.png`)
+  }
 }
 await build({ build: { outDir: 'dist', emptyOutDir: true } })
 const template = await readFile(resolve(root, 'dist/index.html'), 'utf8')
@@ -56,4 +58,4 @@ const indexable = paths.map(getPageSeo).filter((seo) => !seo.noindex && seo.cano
 await writeFile(resolve(root, 'dist/sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexable.map((seo) => `<url><loc>${escape(seo.canonical)}</loc>${seo.modified ? `<lastmod>${seo.modified}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`)
 await writeFile(resolve(root, 'dist/robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${siteOrigin}/sitemap.xml\n`)
 await rm(resolve(root, '.prerender'), { recursive: true, force: true })
-console.log(`Generated ${paths.length} pages, social previews, and two session flyers.`)
+console.log(`Generated ${paths.length} pages, social previews, and four session flyers.`)

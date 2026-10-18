@@ -8,6 +8,6 @@ export function render(path: string) {
   return renderToString(<StaticRouter location={path}><App /></StaticRouter>)
 }
 
-export function renderPoster(story = false) {
-  return renderToStaticMarkup(<SessionPoster story={story} />)
+export function renderPoster(story = false, free = false) {
+  return renderToStaticMarkup(<SessionPoster story={story} free={free} />)
 }

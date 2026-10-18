@@ -39,7 +39,7 @@ for (const file of htmlFiles) {
   }
 }
 assert.equal((sitemap.match(/<loc>/g) ?? []).length, indexable)
-for (const [name, dimensions] of [['portrait', [1080, 1350]], ['story', [1080, 1920]]]) {
+for (const [name, dimensions] of [['portrait', [1080, 1350]], ['story', [1080, 1920]], ['free-portrait', [1080, 1350]], ['free-story', [1080, 1920]]]) {
   const png = await readFile(`dist/generated/sessions-${name}.png`)
   assert.deepEqual([png.readUInt32BE(16), png.readUInt32BE(20)], dimensions)
 }
