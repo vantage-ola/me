@@ -314,34 +314,34 @@ a:hover > .post-item { padding-left: 0.5rem; border-color: var(--border-strong);
     z-index: 20;
     width: 100%;
     height: auto;
-    padding: 0.8rem 1rem;
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: center;
-    gap: 1rem;
+    padding: 0.7rem 1rem;
+    gap: 0.5rem;
     border-right: 0;
   }
   .site-identity small { display: none; }
   .site-nav {
-    min-width: 0;
+    width: 100%;
     margin: 0;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 0.2rem;
   }
-  .site-nav::-webkit-scrollbar { display: none; }
-  .site-nav-link { padding: 0.55rem 0.7rem; flex: 0 0 auto; }
+  .site-nav-link {
+    min-height: 40px;
+    padding: 0.55rem 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
   .site-main { padding: 3rem clamp(1.5rem, 5vw, 3rem); }
   .site-footer { padding-inline: clamp(1.5rem, 5vw, 3rem); }
 }
 
 @media (max-width: 640px) {
-  .site-sidebar { grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem; }
-  .site-identity strong { display: none; }
-  .site-nav { justify-content: center; }
-  .site-nav-link { padding: 0.5rem 0.58rem; font-size: 0.74rem; }
+  .site-nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .site-nav-link { font-size: 0.8rem; }
   .site-main { padding: 2.25rem 1rem 3rem; }
   .site-footer { padding: 0.75rem 1rem; justify-content: center; text-align: center; }
   .hero { margin-bottom: 3rem; }
