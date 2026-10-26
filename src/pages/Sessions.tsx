@@ -101,7 +101,7 @@ export function Sessions() {
             <span>How it works</span>
             <p>Send a request below. I'll reply by email if I can help, confirm your price, and send a Paystack payment link. Once payment is confirmed, I'll send my Calendly link so you can choose a time.</p>
           </div>
-          <p className="offer-small">This is practical feedback from another software engineer. I can't promise a job or rewrite an entire CV during a call.</p>
+          <p className="offer-small">I'll share practical feedback from my experience building software. I can't promise a job or rewrite an entire CV during a call.</p>
           <Link className="text-link" to="/support">Just want to support my work?</Link>
         </section>
 

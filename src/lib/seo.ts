@@ -1,7 +1,7 @@
 import { loadPosts, loadProjects } from './content'
 
 export const siteOrigin = 'https://olaoluwa.work'
-const person = { '@type': 'Person', '@id': `${siteOrigin}/#person`, name: 'Olaoluwa Oluwasanya', url: `${siteOrigin}/about`, jobTitle: 'Software Engineer', sameAs: ['https://github.com/vantage-ola', 'https://www.linkedin.com/in/olaoluwa-oluwasanya/', 'https://iloveracing.medium.com/'] }
+const person = { '@type': 'Person', '@id': `${siteOrigin}/#person`, name: 'Olaoluwa Oluwasanya', url: `${siteOrigin}/about`, sameAs: ['https://github.com/vantage-ola', 'https://www.linkedin.com/in/olaoluwa-oluwasanya/', 'https://iloveracing.medium.com/'] }
 
 export type PageSeo = {
   title: string
@@ -28,8 +28,8 @@ function summary(value: string): string {
 }
 
 const pages: Record<string, [string, string]> = {
-  '/': ['Olaoluwa Oluwasanya | Software engineer', 'Software engineer building useful products. Explore my projects, read my writing, or book practical one-on-one help with software engineering.'],
-  '/about': ['About Olaoluwa | Software engineer', 'Meet Olaoluwa Oluwasanya, a software engineer working with TypeScript, Python, and Node. Learn about my background and how I approach building software.'],
+  '/': ['Olaoluwa Oluwasanya', 'I enjoy building software and making things people find useful. Explore my projects, writing, and one-on-one sessions. Open to work in software and beyond.'],
+  '/about': ['About Olaoluwa', 'Meet Olaoluwa Oluwasanya. I enjoy building software, learning, and solving practical problems. Read about my background, interests, and openness to different kinds of work.'],
   '/projects': ['Software projects | Olaoluwa', 'Projects and open source contributions by Olaoluwa. Explore the software I build, the problems it solves, and the work behind it.'],
   '/writing': ['Writing on software, life, and motorsport | Olaoluwa', 'Articles by Olaoluwa about software engineering, payments, life, and motorsport. Read the latest posts and browse the archive.'],
   '/uses': ['Tools I use | Olaoluwa', 'The editor, development tools, hardware, and AI tools I use to build and ship software.'],

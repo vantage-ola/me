@@ -9,9 +9,9 @@ const socials = [
 export function Hero() {
   return (
     <section className="hero">
-      <h1>I build useful software for real people.</h1>
+      <h1>I build things people find useful.</h1>
       <p className="hero-intro">
-        I'm Olaoluwa. I work across the stack, turning practical ideas into products that are simple to use and built to last.
+        I'm Olaoluwa. I enjoy building software and figuring things out. I'm open to different kinds of work where I can help solve a problem.
       </p>
       <div className="hero-socials" aria-label="Social links">
         {socials.map(({ label, url }) => (

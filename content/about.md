@@ -1,6 +1,6 @@
 # About
 
-Hi, I'm Olaoluwa, a software engineer who builds things people actually use. Outside of coding, I'm into motorsports and working toward becoming a gentleman driver, touring circuits around the world is the long-term plan.
+Hi, I'm Olaoluwa. I enjoy building software and making things people find useful. I'm curious about other kinds of work too, and I'm happy to learn what a problem needs. Outside of work, I'm into motorsports and working toward becoming a gentleman driver. Touring circuits around the world is the long-term plan.
 
 I enjoy traveling and meeting people from very different places. The medium-term goal is to build products that matter while training seriously enough to eventually race. Sim racing is the current on-ramp.
 
@@ -20,4 +20,4 @@ And I think tools should serve the person using them, not the other way around. 
 
 ## Get in touch
 
-The best way to reach me is on [GitHub](https://github.com/vantage-ola) or [X](https://x.com/oosanya2). I'm open to interesting work, collaborations, or just talking through a problem.
+The best way to reach me is on [GitHub](https://github.com/vantage-ola) or [X](https://x.com/oosanya2). I'm open to paid work and collaborations, in software and beyond. If you have a problem I could help with, let's talk.

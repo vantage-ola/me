@@ -26,9 +26,9 @@ function lines(text, limit = 35, max = 3) {
   return rows.slice(0, max)
 }
 function socialImage(seo) {
-  const title = seo.title.replace(/ \| (?:Projects by )?Olaoluwa(?: Oluwasanya)?(?: \| Software engineer)?$/, '')
+  const title = seo.title.replace(/ \| (?:Projects by )?Olaoluwa(?: Oluwasanya)?$/, '')
   const rows = lines(title)
-  const label = seo.path.startsWith('/writing/') ? 'WRITING' : seo.path.startsWith('/projects/') ? 'PROJECTS' : seo.path === '/sessions' ? 'ONE-ON-ONE SESSIONS' : 'SOFTWARE ENGINEER'
+  const label = seo.path.startsWith('/writing/') ? 'WRITING' : seo.path.startsWith('/projects/') ? 'PROJECTS' : seo.path === '/sessions' ? 'ONE-ON-ONE SESSIONS' : 'OLAOLUWA.WORK'
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" font-family="Figtree"><rect width="1200" height="630" fill="#111111"/><path d="M960 0V240H1200M1020 0V180H1200M1080 0V120H1200" stroke="#20e6ef" stroke-opacity=".2" fill="none"/><text x="68" y="90" fill="#20e6ef" font-size="25" letter-spacing="3">${label}</text>${rows.map((line, i) => `<text x="64" y="${216 + i * 76}" fill="#f5f5f5" font-size="62" font-weight="700">${escape(line)}</text>`).join('')}<line x1="68" x2="1132" y1="475" y2="475" stroke="#333"/><text x="68" y="551" fill="#eee" font-size="32" font-weight="700">olaoluwa.</text><text x="1132" y="549" text-anchor="end" fill="#aaa" font-size="25">olaoluwa.work</text></svg>`
 }
 for (const path of paths) {

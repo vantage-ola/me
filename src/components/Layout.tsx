@@ -18,7 +18,6 @@ export function Layout({ children }: { children: ReactNode }) {
       <header className="site-sidebar">
         <NavLink to="/" className="site-identity" aria-label="Olaoluwa — home">
           <strong>Olaoluwa</strong>
-          <small>Software Engineer</small>
         </NavLink>
 
         <nav className="site-nav" aria-label="Main navigation">
