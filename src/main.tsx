@@ -6,7 +6,7 @@ import '@mdwrk/markdown-renderer-react/styles/default.css'
 import './styles/themes.css'
 import './index.css'
 import App from './App.tsx'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 const root = document.getElementById('root')!
 const app = (
