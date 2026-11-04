@@ -6,12 +6,14 @@ import '@mdwrk/markdown-renderer-react/styles/default.css'
 import './styles/themes.css'
 import './index.css'
 import App from './App.tsx'
+import { Analytics } from "@vercel/analytics/next"
 
 const root = document.getElementById('root')!
 const app = (
   <StrictMode>
     <BrowserRouter>
       <App />
+      <Analytics />
     </BrowserRouter>
   </StrictMode>
 )
