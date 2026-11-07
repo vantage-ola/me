@@ -1,14 +1,10 @@
 import { useCallback, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { Turnstile } from '../components/Turnstile'
-import { formatNaira, sessionPackages } from '../../shared/session-pricing.mjs'
 
 const focusOptions = ['CV review', 'Portfolio or project review', 'Getting started', 'Something else']
 
 export function Sessions() {
-  const [packageId, setPackageId] = useState('workshop')
-  const [customHours, setCustomHours] = useState(3)
-  const selected = sessionPackages.find((option) => option.id === packageId)
   const [busy, setBusy] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState('')
@@ -34,8 +30,6 @@ export function Sessions() {
         body: JSON.stringify({
           name: values.get('name'),
           email: values.get('email'),
-          packageId,
-          ...(packageId === 'custom' ? { customHours } : {}),
           focus: values.get('focus'),
           link: values.get('link'),
           details: values.get('details'),
@@ -63,30 +57,17 @@ export function Sessions() {
       <p className="page-lead">One-on-one help for people getting started with software engineering. Bring a CV, a project, or a question about what to learn next.</p>
 
       <div className="intro-offer">
-        <strong>50% off for the first five people I approve</strong>
-        <p>Pick a session below. I'll confirm by email if you get one of the five discounted spots before you pay. The discount also applies to an agreed custom quote.</p>
+        <strong>Free, 1 hour 30 minutes, one-on-one</strong>
+        <p>No payment. Send a request below and I'll reply by email with a link to pick a time.</p>
       </div>
 
-      <fieldset className="session-plans">
-        <legend>Choose how much time you need</legend>
-        <div className="session-plan-grid">
-          {sessionPackages.map((option) => <label key={option.id} className={`session-plan${packageId === option.id ? ' selected' : ''}`}>
-            <input type="radio" name="session-package" value={option.id} checked={packageId === option.id} onChange={() => setPackageId(option.id)} />
-            <span className="plan-duration">{option.duration}</span>
-            <strong className="plan-name">{option.name}</strong>
-            <span className="plan-description">{option.description}</span>
-            <span className="plan-price">{formatNaira(option.price)}</span>
-            <span className="plan-saving">{option.hourlyPrice > option.price ? <><s>{formatNaira(option.hourlyPrice)}</s> at the hourly rate. Save {formatNaira(option.hourlyPrice - option.price)}.</> : 'The regular hourly rate.'}</span>
-            <span className="plan-intro"><span>First-five offer</span><span><s>{formatNaira(option.price)}</s> <strong>{formatNaira(option.price / 2)}</strong></span></span>
-            {option.id === 'workshop' && <span className="plan-fit">Good for a review + changes</span>}
-          </label>)}
-        </div>
-        <label className={`session-plan custom-plan${packageId === 'custom' ? ' selected' : ''}`}>
-          <input type="radio" name="session-package" value="custom" checked={packageId === 'custom'} onChange={() => setPackageId('custom')} />
-          <span><strong className="plan-name">Multiple hours</strong><span className="plan-description">Need more than two hours or a few sessions? Tell me what you're working on and we'll agree a plan.</span></span>
-          <strong className="custom-quote">Ask for a quote</strong>
-        </label>
-      </fieldset>
+      <figure className="testimonial">
+        <blockquote>
+          <p>You helped me see things from a different perspective and gain clarity on what I'm truly passionate about, the direction I want to pursue, and the steps I can take to deepen my knowledge while creating opportunities to earn from it.</p>
+          <p>I would definitely recommend to anyone who needs genuine support and advice regarding any dilemma in their niche.</p>
+        </blockquote>
+        <figcaption><strong>Japheth</strong><span>After our session</span></figcaption>
+      </figure>
 
       <div className="offer-grid">
         <section className="offer-copy" aria-labelledby="session-about">
@@ -96,13 +77,13 @@ export function Sessions() {
             <li><strong>Portfolio or project review</strong><span>Look at what you've built and how you explain it.</span></li>
             <li><strong>Getting started</strong><span>Talk through your current skills and pick useful next steps.</span></li>
           </ul>
-          <p>An hour works well for one focused review. Ninety minutes gives us time to make changes together. Choose two hours for a longer walkthrough, or ask about splitting a few hours across sessions.</p>
+          <p>Ninety minutes gives us time to talk through where you are, look at your work, and leave with clear next steps.</p>
           <div className="offer-note">
             <span>How it works</span>
-            <p>Send a request below. I'll reply by email if I can help, confirm your price, and send a Paystack payment link. Once payment is confirmed, I'll send my Calendly link so you can choose a time.</p>
+            <p>Send a request below. I'll reply by email if I can help and send my Calendly link so you can choose a time.</p>
           </div>
           <p className="offer-small">I'll share practical feedback from my experience building software. I can't promise a job or rewrite an entire CV during a call.</p>
-          <Link className="text-link" to="/support">Just want to support my work?</Link>
+          <Link className="text-link" to="/support">Found it useful? You can support my work.</Link>
         </section>
 
         <section className="offer-form-panel" aria-labelledby="request-title">
@@ -119,8 +100,7 @@ export function Sessions() {
                 <label> Name <input name="name" type="text" autoComplete="name" maxLength={100} required /></label>
                 <label> Email <input name="email" type="email" autoComplete="email" maxLength={254} required /></label>
               </div>
-              <p className="selected-session" role="status">{selected ? `${selected.duration} · ${formatNaira(selected.price)} before any first-five discount` : 'Multiple hours · price agreed by email'}</p>
-              {packageId === 'custom' && <label>How many hours are you thinking of? <input type="number" min={3} max={20} step={1} value={customHours} onChange={(event) => setCustomHours(Number(event.target.value))} required /><span className="optional">We can split these across a few calls.</span></label>}
+              <p className="selected-session">1 hour 30 minutes · free</p>
               <label>What should we focus on? <select name="focus" required defaultValue=""><option value="" disabled>Choose one</option>{focusOptions.map((focus) => <option key={focus}>{focus}</option>)}</select></label>
               <label>What would you like help with? <textarea name="details" rows={5} minLength={12} maxLength={3000} placeholder="A few sentences are enough." required /></label>
               <label>Relevant link <span className="optional">(optional)</span><input name="link" type="url" placeholder="CV, portfolio, GitHub, or project link" maxLength={500} /></label>
@@ -128,7 +108,7 @@ export function Sessions() {
               <Turnstile onToken={onChallengeToken} resetCount={challengeResetCount} />
               {error && <p className="form-error" role="alert">{error}</p>}
               <button className="primary-button" type="submit" disabled={busy || !challengeToken}>{busy ? 'Sending…' : 'Send request'}</button>
-              <p className="form-footnote">No payment yet. I'll confirm your price and any discount by email first. I'll only use your email to arrange this session.</p>
+              <p className="form-footnote">I'll only use your email to arrange this session.</p>
             </form>
           )}
         </section>

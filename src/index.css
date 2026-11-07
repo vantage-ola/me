@@ -402,6 +402,13 @@ a:hover > .post-item { padding-left: 0.5rem; border-color: var(--border-strong);
 }
 .intro-offer strong { color: var(--fg-primary); font-size: 0.98rem; }
 .intro-offer p { margin: 0.4rem 0 0; color: var(--fg-secondary); font-size: 0.91rem; line-height: 1.6; }
+.testimonial { max-width: 720px; margin: 0 0 3rem; padding: 1.4rem 1.5rem; border: 1px solid var(--border-strong); border-radius: 9px; background: var(--bg-elevated); }
+.testimonial blockquote { margin: 0; }
+.testimonial blockquote p { margin: 0 0 0.8rem; color: var(--fg-primary); font-size: 1.02rem; line-height: 1.7; }
+.testimonial blockquote p:first-child::before { content: '“'; }
+.testimonial blockquote p:last-child::after { content: '”'; }
+.testimonial figcaption { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: baseline; margin-top: 1rem; font-size: 0.88rem; }
+.testimonial figcaption span { color: var(--fg-muted); }
 .offer-highlight { color: var(--accent); font-weight: 650; }
 .session-plans { min-width: 0; margin: 0 0 3rem; padding: 0; border: 0; }
 .session-plans legend { margin-bottom: 1rem; padding: 0; color: var(--fg-secondary); font-size: 0.9rem; }

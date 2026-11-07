@@ -16,6 +16,13 @@ const request = (input) => new Request('https://olaoluwa.work/api/test', { metho
 const applicant = { name: 'Test Applicant', email: 'applicant@example.test', details: 'Please review my project and help me improve it.', focus: 'Portfolio or project review', challengeToken: 'fake_token' }
 const originalFetch = globalThis.fetch
 
+async function signOffer(payload) {
+  const expires = Math.floor(Date.now() / 1000) + 3600
+  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(process.env.PAYSTACK_SECRET_KEY), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'])
+  const signature = new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(`${payload}:${expires}`)))
+  return `${expires}.${Array.from(signature, (byte) => byte.toString(16).padStart(2, '0')).join('')}`
+}
+
 async function ownerMessage(input) {
   let message
   globalThis.fetch = async (url, options) => {
@@ -46,16 +53,11 @@ test('session requests, checkout amounts, and discount permissions', async (t) =
   try {
     for (const option of sessionPackages) {
       await t.test(`${option.duration}: regular and first-five prices agree across email, checkout, and verification`, async () => {
-        const message = await ownerMessage({ packageId: option.id })
-        assert.ok(message.includes(option.duration))
-        const links = [...message.matchAll(/https:\/\/olaoluwa\.work\/sessions\/pay\?\S+/g)].map(([url]) => new URL(url))
-        assert.equal(links.length, 2)
-        assert.equal(links[0].searchParams.get('package'), option.id)
         const { payload } = await checkout({ packageId: option.id })
         assert.equal(payload.amount, option.price * 100)
         assert.equal((await verifyPayment(payload)).paid, true)
         assert.equal((await verifyPayment(payload, payload.amount - 100)).paid, false)
-        const offer = links[1].searchParams.get('offer')
+        const offer = await signOffer(`first-five:v2:${applicant.email}:${option.id}`)
         const half = await checkout({ packageId: option.id, offer })
         assert.equal(half.payload.amount, option.price * 50)
         const verified = await verifyPayment(half.payload)
@@ -68,22 +70,18 @@ test('session requests, checkout amounts, and discount permissions', async (t) =
       })
     }
     await t.test('old links retain the original hourly price and discount', async () => {
-      const message = await ownerMessage({ hours: 2 })
-      const discounted = new URL(message.match(/https:\/\/olaoluwa\.work\/sessions\/pay\?[^\s]+offer=[^\s]+/)[0])
       const { payload } = await checkout({ hours: 2 })
       assert.equal(payload.amount, 2_000_000)
       assert.equal((await verifyPayment(payload)).paid, true)
-      const half = await checkout({ hours: 2, offer: discounted.searchParams.get('offer') })
+      const half = await checkout({ hours: 2, offer: await signOffer(`first-five:v1:${applicant.email}:2`) })
       assert.equal(half.payload.amount, 1_000_000)
       assert.equal((await verifyPayment(half.payload)).paid, true)
     })
-    await t.test('custom requests ask for an agreed quote and cannot use fixed checkout', async () => {
-      const message = await ownerMessage({ packageId: 'custom', customHours: 4 })
-      assert.ok(message.includes('4 hours, custom quote'))
-      assert.ok(message.includes('50% off your agreed quote'))
-      assert.ok(!message.includes('/sessions/pay?'))
-      assert.equal((await checkout({ packageId: 'custom', hours: 1 })).result.status, 400)
-      assert.equal((await requestSession(request({ ...applicant, packageId: 'custom', customHours: 2 }))).status, 400)
+    await t.test('session requests are free and carry no payment links', async () => {
+      const message = await ownerMessage({})
+      assert.ok(message.includes('Free, 1 hour 30 minutes'))
+      assert.ok(!message.includes('/sessions/pay'))
+      assert.equal((await requestSession(request({ ...applicant, focus: 'Not an option' }))).status, 400)
     })
     await t.test('invalid packages and malformed inputs are rejected', async () => {
       assert.equal((await checkout({ packageId: 'fake', hours: 1 })).result.status, 400)

@@ -34,7 +34,7 @@ const pages: Record<string, [string, string]> = {
   '/writing': ['Writing on software, life, and motorsport | Olaoluwa', 'Articles by Olaoluwa about software engineering, payments, life, and motorsport. Read the latest posts and browse the archive.'],
   '/uses': ['Tools I use | Olaoluwa', 'The editor, development tools, hardware, and AI tools I use to build and ship software.'],
   '/now': ["What I'm working on now | Olaoluwa", "A look at what I'm building, learning, and spending time on right now."],
-  '/sessions': ['Software engineering sessions for beginners | Olaoluwa', 'Book practical one-on-one software engineering help: CV feedback, project reviews, or a plan for what to learn next. Sessions start at ₦10,000.'],
+  '/sessions': ['Software engineering sessions for beginners | Olaoluwa', 'Book a free 90-minute one-on-one session for software engineering help: CV feedback, project reviews, or a plan for what to learn next.'],
   '/support': ['Support my work | Olaoluwa', "Found something I've built or written useful? Choose an amount and support my work through Paystack."],
   '/sessions/promo': ['One-on-one sessions | Olaoluwa', 'Practical software engineering help for beginners. View and download the session flyer.'],
   '/sessions/pay': ['Session payment | Olaoluwa', 'Complete your approved session booking securely through Paystack.'],
